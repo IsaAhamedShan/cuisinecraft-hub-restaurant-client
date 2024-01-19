@@ -8,7 +8,7 @@ import { FaMicrosoft } from "react-icons/fa";
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

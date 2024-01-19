@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import logo from "../../assets/main-logo/svg/logo-no-background.svg";
-import logoVertical from "../../assets/main-logo/svg/logo-no-background-vertical.svg";
-import { AuthContext } from "../provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import logoVertical from "../../../assets/main-logo/svg/logo-no-background-vertical.svg";
+import logo from "../../../assets/main-logo/svg/logo-no-background.svg";
+import { AuthContext } from "../../provider/AuthProvider";
 const Navbar = () => {
   const { logout } = useContext(AuthContext);
   const handleLogout = () => {
