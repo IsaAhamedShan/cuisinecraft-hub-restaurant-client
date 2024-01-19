@@ -3,6 +3,10 @@ import Banner from "./Banner/Banner";
 import Category from "./Category/Category";
 import SectionIntro from "../../common/SectionIntro";
 import CategoryIntro from "../../common/CategoryIntro";
+import PopularMenu from "./PopularMenu/PopularMenu";
+import ChefRecommendation from "./ChefRecommendation/ChefRecommendation";
+import FeaturedItemSection from "./FeaturedItemSection/FeaturedItemSection";
+import ReviewSection from "./ReviewSection/ReviewSection";
 
 const Home = () => {
     const categoryIntroInfo = {
@@ -19,6 +23,10 @@ const Home = () => {
       {/* <SectionIntro heading={}></SectionIntro> */}
       <Category></Category>
       <CategoryIntro categoryIntroInfo={categoryIntroInfo}></CategoryIntro>
+      <PopularMenu></PopularMenu>
+      <ChefRecommendation></ChefRecommendation>
+      <FeaturedItemSection></FeaturedItemSection>
+      <ReviewSection></ReviewSection>
     </div>
   );
 };

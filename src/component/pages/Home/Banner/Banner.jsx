@@ -9,29 +9,29 @@ import img6 from '../../../../assets/home/06.png';
 const Banner = () => {
     return (
         <div className="">
-            <Carousel autoPlay='true' interval='4000'>
+            <Carousel className="m-auto md:max-w-5xl lg:max-w-7xl" autoPlay='true' interval='4000'>
             <div>
-                <img className="md:max-w-5xl lg:max-w-7xl" src={img1} />
+                <img className="" src={img1} />
                 {/* <p className="legend">Legend 1</p> */}
             </div>
             <div>
-                <img className="md:max-w-5xl lg:max-w-7xl" src={img2} />
+                <img className="" src={img2} />
                 {/* <p className="legend">Legend 2</p> */}
             </div>
             <div>
-                <img className="md:max-w-5xl lg:max-w-7xl" src={img3} />
+                <img className="" src={img3} />
                 {/* <p className="legend">Legend 3</p> */}
             </div>
             <div>
-                <img className="md:max-w-5xl lg:max-w-7xl" src={img4} />
+                <img className="" src={img4} />
                 {/* <p className="legend">Legend 3</p> */}
             </div>
             <div>
-                <img className="md:max-w-5xl lg:max-w-7xl" src={img5} />
+                <img className="" src={img5} />
                 {/* <p className="legend">Legend 3</p> */}
             </div>
             <div>
-                <img className="md:max-w-5xl lg:max-w-7xl" src={img6} />
+                <img className="" src={img6} />
                 {/* <p className="legend">Legend 3</p> */}
             </div>
                 </Carousel>
