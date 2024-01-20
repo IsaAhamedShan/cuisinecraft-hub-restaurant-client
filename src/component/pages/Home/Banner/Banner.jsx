@@ -9,7 +9,7 @@ import img6 from '../../../../assets/home/06.png';
 const Banner = () => {
     return (
         <div className="">
-            <Carousel className="m-auto md:max-w-5xl lg:max-w-7xl" autoPlay='true' interval='4000'>
+            <Carousel className="m-auto" autoPlay='true' interval='4000'>
             <div>
                 <img className="" src={img1} />
                 {/* <p className="legend">Legend 1</p> */}

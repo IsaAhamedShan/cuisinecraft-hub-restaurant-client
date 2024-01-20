@@ -25,11 +25,12 @@ const ReviewSection = () => {
       });
   }, []);
   return (
-    <div className="max-w-7xl m-auto">
+    <div className="max-w-7xl m-auto my-20">
       <SectionIntro
         heading={"What Our Client Say"}
         text={"TESTIMONIALS"}
       ></SectionIntro>
+
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper" loop="true">
         {data.map(item => (
           <SwiperSlide key={item._id}>

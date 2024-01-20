@@ -51,7 +51,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-[#F3F3B7]  h-24 md:h-[130px] px-10">
+    <div className="navbar bg-[#F3F3B7]  h-16 md:h-[110px] px-10">
       <div className="navbar-start w-full ">
         <Toaster></Toaster>
         <div className="dropdown">
