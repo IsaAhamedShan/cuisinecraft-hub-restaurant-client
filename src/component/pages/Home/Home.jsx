@@ -8,7 +8,7 @@ import ChefRecommendation from "./ChefRecommendation/ChefRecommendation";
 import FeaturedItemSection from "./FeaturedItemSection/FeaturedItemSection";
 import ReviewSection from "./ReviewSection/ReviewSection";
 import { Helmet } from "react-helmet-async";
-
+import restaurantbg from '../../../assets/others/restaurantbg.png'
 const Home = () => {
   const categoryIntroInfo = {
     backgroundColor: "bg-white",
@@ -17,6 +17,7 @@ const Home = () => {
     description:
       "CuisineCraft Hub is an epicurean sanctuary, blending gastronomic mastery with a warm communal embrace. Indulge in an extraordinary culinary journey, where delectable creations harmonize with conviviality, crafting an ambiance that transforms dining into an unforgettable celebration of taste and togetherness",
     textColor: "black",
+    backgroundImg:restaurantbg
   };
   return (
     <div>
