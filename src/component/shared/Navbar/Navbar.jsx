@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import { useContext,useEffect,useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import logoVertical from "../../../assets/main-logo/svg/logo-no-background-vertical.svg";
 import logo from "../../../assets/main-logo/svg/logo-no-background.svg";
 import { AuthContext } from "../../provider/AuthProvider";
+
 const Navbar = () => {
   const { logout } = useContext(AuthContext);
+ 
   const handleLogout = () => {
     logout()
       .then(() => {
@@ -23,22 +25,36 @@ const Navbar = () => {
         unsuccessLogout();
       });
   };
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll =()=>{
+      if(window.scrollY>50){
+        setScrolling(true)
+      }
+      else(setScrolling(false))
+    }
+    window.addEventListener("scroll",handleScroll)
+    return ()=>{
+      window.removeEventListener("scroll",handleScroll)
+    }
+  }, []);
   const navList = (
     <>
       <li className="font-bold">
         <Link to="/">HOME</Link>
       </li>
       <li className="font-bold">
-        <Link to="/">CONTACT US</Link>
+        <Link to="/contactUs">CONTACT US</Link>
       </li>
       <li className="font-bold">
-        <Link to="/">DASHBOARD</Link>
+        <Link to="/dashboard">DASHBOARD</Link>
       </li>
       <li className="font-bold">
-        <Link to="/">OUR MENU</Link>
+        <Link to="/ourMenu">OUR MENU</Link>
       </li>
       <li className="font-bold">
-        <Link to="/">OUR SHOP</Link>
+        <Link to="/ourShop">OUR SHOP</Link>
       </li>
       <li className="font-bold">
         <Link to="/signin">SIGN IN</Link>
@@ -51,7 +67,9 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-[#F3F3B7]  h-16 md:h-[110px] px-10">
+    <div className={`navbar ${
+        scrolling ? "bg-[#F3F3B7] opacity-60 text-gray-700" : "bg-[#F3F3B7]"
+      }  h-16 md:h-[110px] px-10 transition-all duration-300 fixed z-10`}>
       <div className="navbar-start w-full ">
         <Toaster></Toaster>
         <div className="dropdown">

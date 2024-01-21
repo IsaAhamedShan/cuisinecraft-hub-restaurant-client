@@ -9,6 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 const SignIn = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -42,6 +43,9 @@ const SignIn = () => {
       className="h-[100dvh]"
       style={{ backgroundImage: `url(${backgroundWhite})` }}
     >
+      <Helmet>
+        <title>CuisineCraft-Hub | SignIn</title>
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 py-4 md:py-12 xl:py-12  justify-center items-center max-w-7xl m-auto">
       <Toaster />
       {/* image */}

@@ -7,17 +7,22 @@ import PopularMenu from "./PopularMenu/PopularMenu";
 import ChefRecommendation from "./ChefRecommendation/ChefRecommendation";
 import FeaturedItemSection from "./FeaturedItemSection/FeaturedItemSection";
 import ReviewSection from "./ReviewSection/ReviewSection";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
-    const categoryIntroInfo = {
-        backgroundColor:'bg-white',
-        opacity: 'opacity-100',
-        heading:'CUISINECRAFT HUB',
-        description:'CuisineCraft Hub is an epicurean sanctuary, blending gastronomic mastery with a warm communal embrace. Indulge in an extraordinary culinary journey, where delectable creations harmonize with conviviality, crafting an ambiance that transforms dining into an unforgettable celebration of taste and togetherness',
-        textColor:'black'
-    }
+  const categoryIntroInfo = {
+    backgroundColor: "bg-white",
+    opacity: "opacity-100",
+    heading: "CUISINECRAFT HUB",
+    description:
+      "CuisineCraft Hub is an epicurean sanctuary, blending gastronomic mastery with a warm communal embrace. Indulge in an extraordinary culinary journey, where delectable creations harmonize with conviviality, crafting an ambiance that transforms dining into an unforgettable celebration of taste and togetherness",
+    textColor: "black",
+  };
   return (
     <div>
+      <Helmet>
+        <title>CuisineCraft-Hub | Home</title>
+      </Helmet>
       {/* <Navbar></Navbar> */}
       <Banner></Banner>
       {/* <SectionIntro heading={}></SectionIntro> */}
