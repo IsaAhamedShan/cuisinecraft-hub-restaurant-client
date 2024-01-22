@@ -12,11 +12,13 @@ import "swiper/css/navigation";
 
 // import './styles.css'
 import { Navigation } from "swiper/modules";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 const ReviewSection = () => {
+  const axiosSecure = useAxiosSecure()
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios
-      .get("review.json")
+    axiosSecure
+      .get("/review")
       .then(res => {
         setData(res.data);
       })

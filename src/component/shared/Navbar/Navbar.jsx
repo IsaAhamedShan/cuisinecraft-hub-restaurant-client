@@ -1,4 +1,4 @@
-import { useContext,useEffect,useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import logoVertical from "../../../assets/main-logo/svg/logo-no-background-vertical.svg";
@@ -7,7 +7,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
   const { logout } = useContext(AuthContext);
- 
+
   const handleLogout = () => {
     logout()
       .then(() => {
@@ -28,16 +28,15 @@ const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
-    const handleScroll =()=>{
-      if(window.scrollY>50){
-        setScrolling(true)
-      }
-      else(setScrolling(false))
-    }
-    window.addEventListener("scroll",handleScroll)
-    return ()=>{
-      window.removeEventListener("scroll",handleScroll)
-    }
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolling(true);
+      } else setScrolling(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
   const navList = (
     <>
@@ -62,14 +61,18 @@ const Navbar = () => {
       <li className="font-bold">
         <Link to="/register">REGISTER</Link>
       </li>
-      <li className="font-bold" onClick={handleLogout}><Link>LOGOUT</Link></li>
+      <li className="font-bold" onClick={handleLogout}>
+        <Link>LOGOUT</Link>
+      </li>
     </>
   );
 
   return (
-    <div className={`navbar ${
+    <div
+      className={`navbar ${
         scrolling ? "bg-[#F3F3B7] opacity-60 text-gray-700" : "bg-[#F3F3B7]"
-      }  h-16 md:h-[110px] px-10 transition-all duration-300 fixed z-10`}>
+      }  h-16 md:h-[110px] px-10 transition-all duration-300 fixed z-10`}
+    >
       <div className="navbar-start w-full ">
         <Toaster></Toaster>
         <div className="dropdown">

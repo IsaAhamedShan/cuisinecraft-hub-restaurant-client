@@ -1,19 +1,22 @@
 import React, { useContext, useState } from "react";
 import backgroundWhite from "../../assets/others/authentication-light.png";
 // import backgroundBlack from '../../assets/others/Authentication-black.png'
+import ReCAPTCHA from "react-google-recaptcha";
+import toast, { Toaster } from "react-hot-toast";
 import { AiFillGoogleCircle } from "react-icons/ai";
-import { FaFacebook } from "react-icons/fa6";
-import authenticationImg from "../../assets/others/authentication2.png";
 import { FaMicrosoft } from "react-icons/fa";
-import toast, { Toaster } from 'react-hot-toast';
+import { FaFacebook } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import authenticationImg from "../../assets/others/authentication2.png";
 import { AuthContext } from "../provider/AuthProvider";
-
+import axios from 'axios';
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { register } = useContext(AuthContext);
+  const [captchaVal, setCaptchaVal] = useState(false);
   const handleNameChange = e => {
     setName(e.target.value);
   };
@@ -23,21 +26,45 @@ const Register = () => {
   const handlePasswordChange = e => {
     setPassword(e.target.value);
   };
-  const successToast = ()=>toast.success("Registration Success")
-  const unsuccessfulToast = ()=>toast.error("Registration Unsuccess")
+  const successToast = () => toast.success("Registration Success");
+  const unsuccessfulToast = () => toast.error("Registration Unsuccess");
+const axiosSecure = useAxiosSecure()
+  function onChange(captchaValue) {
+    axiosSecure.post('/verify-recaptcha',{
+      recaptchaValue:captchaValue
+    })
+    .then((res)=>{
+      res.success === true ?setCaptchaVal(true): setCaptchaVal(false)
+    })
+    .catch(error=>{
+      console.log('captcha error')
+    })
+    
+    console.log("Captcha value:", captchaValue);
+    setCaptchaVal(captchaValue)
+  }
 
   const handleSignUp = () => {
     console.log(name, email, password);
     // register(email, password)
-    register(email, password)
+    
+      if(captchaVal){
+        register(email, password)
       .then(res => {
         console.log("success sign up: ", res);
-        successToast()
+        successToast();
       })
       .catch(error => {
         console.log("error from sign up: ", error);
-        unsuccessfulToast()
+        unsuccessfulToast();
       });
+      }
+      else{
+        console.log("signup error")
+      }
+    
+    
+    
   };
   return (
     <div
@@ -45,7 +72,7 @@ const Register = () => {
       style={{ backgroundImage: `url(${backgroundWhite})` }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 py-4 md:py-12 xl:py-12  justify-center items-center max-w-7xl m-auto">
-      <Toaster />
+        <Toaster />
         {/* signin/registerpage */}
         <div className="w-full">
           <form className="px-16">
@@ -106,7 +133,9 @@ const Register = () => {
               <FaMicrosoft className="text-3xl" />
             </div>
           </div>
+          <ReCAPTCHA sitekey="6Lfv_lgpAAAAAIdVbA4ch5QKQPHn_JaUAofsNx58" onChange={onChange} />
         </div>
+       
         {/* image */}
         <div className="hidden md:block">
           <img src={authenticationImg} alt="" />

@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import useAxiosSecure from "./useAxiosSecure";
 const useMenu = categoryName => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   //   console.log(categoryName)
+  const axiosSecure = useAxiosSecure()
   useEffect(() => {
     // setLoading(true)
-    axios
-      .get("../../../public/menu.json")
+    axiosSecure
+      .get("/menu")
       .then(res => {
         console.log("menu data is ", res.data);
         const filteredData = categoryName

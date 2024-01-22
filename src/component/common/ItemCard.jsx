@@ -4,12 +4,12 @@ const ItemCard = ({ item }) => {
   const { image, name, recipe } = item;
   return (
     <div>
-      <div className="card w-[424px] h-[541px] shadow-xl rounded-sm hover:scale-105 duration-200 cursor-pointer bg-gray-200 ">
-        <figure className="">
+      <div className="card w-[400px] h-[541px] shadow-xl rounded-sm hover:scale-105 duration-200 cursor-pointer bg-gray-200 ">
+        <figure>
           <img
             src={image}
             alt="Shoes"
-            className="rounded-none w-[424px] h-[300px]"
+            className="rounded-none min-w-[400px] min-h-[300px]"
           />
         </figure>
         <div className="card-body items-center text-center">

@@ -10,21 +10,18 @@ import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyCSKhkdRQLeBvuSRnr2sO_1IXlI42wo1nE",
+  apiKey: import.meta.env.VITE_APIKEY,
 
-  authDomain: "cuisinecraft-hub-restaurant.firebaseapp.com",
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
 
-  projectId: "cuisinecraft-hub-restaurant",
+  projectId: import.meta.env.VITE_PROJECTID,
 
-  storageBucket: "cuisinecraft-hub-restaurant.appspot.com",
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
 
-  messagingSenderId: "846322275342",
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
 
-  appId: "1:846322275342:web:08d01dd33134103731985f"
-
-};
-
-
+  appId: import.meta.env.VITE_APPIDVITE
+}
 // Initialize Firebase
 
 const app = initializeApp(firebaseConfig);
