@@ -3,7 +3,6 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../shared/Navbar/Navbar';
 
 const Main = () => {
-
 const [theme, setTheme] = useState('light');
 const location = useLocation()
 console.log(location)
@@ -12,8 +11,7 @@ console.log(location)
   }, [theme]);
     return (
         <div>
-            {location.pathname !== ('/signin'||'/register') && <Navbar></Navbar>}
-              
+            {location.pathname !== ('/signin') && location.pathname !== ('/register') ? <Navbar></Navbar>:null}
             <div className=''>
                 <Outlet></Outlet>
             </div>
