@@ -22,8 +22,8 @@ const CategoryIntro = ({ categoryIntroInfo }) => {
           <div
             className={`flex flex-col justify-center items-center gap-6 py-12 px-4 xl:px-28 ${backgroundColor} ${opacity}  md:px-0 md:py-28 md:max-w-3xl xl:max-w-5xl m-auto ${textColor}`}
           >
-            <h1 className="text-4xl text-center flex gap-4 justify-center items-center">{heading} {icon}</h1>
-            <p className={`max-w-3xl text-center ${textColor}`}>{description}</p>
+            <h1 className="text-4xl text-center flex gap-4 justify-center items-center font-rancho">{heading} {icon}</h1>
+            <p className={`max-w-3xl font-roboto text-center ${textColor}`}>{description}</p>
           </div>
           {/* <div style={{ height: "400px" }} /> */}
         </div>

@@ -9,8 +9,9 @@ const ChefRecommendation = () => {
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
     axiosSecure
-      .get("/menu")
+      .get("/chef_recommendation")
       .then(res => {
+// console.log(res.data)
         setData(res.data);
       })
       .catch(error => {

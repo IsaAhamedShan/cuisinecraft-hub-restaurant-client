@@ -9,13 +9,13 @@ import SoupSection from "./SoupSection/SoupSection";
 const OurMenu = () => {
   const coverDetails = {
     image: banner3,
-    heading: "OUR MENU",
+    heading: "MENU",
     text: "Would you like to take a dish?",
   };
   return (
     <div>
       <Helmet>
-        <title>CuisineCraft-Hub | Our Menu</title>
+        <title>CuisineCraft-Hub | Menu</title>
       </Helmet>
       <Cover coverDetails={coverDetails}></Cover>
       <DessertsSection></DessertsSection>

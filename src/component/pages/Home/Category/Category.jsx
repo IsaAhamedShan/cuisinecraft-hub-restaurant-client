@@ -12,7 +12,7 @@ import slide2 from "../../../../assets/home/slide2.jpg";
 import slide3 from "../../../../assets/home/slide3.jpg";
 import slide4 from "../../../../assets/home/slide4.jpg";
 import slide5 from "../../../../assets/home/slide5.jpg";
-
+import './Category.css'
 // import required modules
 import { FreeMode, Pagination } from "swiper/modules";
 import SectionIntro from "../../../common/SectionIntro";
@@ -49,32 +49,32 @@ const Category = () => {
       >
         <SwiperSlide>
           <img src={slide1} alt="" />
-          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl -mt-20">
-            SALAD
+          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl -mt-20 font-rancho ">
+            <span className="bg-gradient-to-r  from-green-500 to-[#d6b704] inline-block text-transparent bg-clip-text">SALAD</span>
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide2} alt="" />
-          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl -mt-20">
-            PIZZA
+          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl -mt-20 font-rancho text-[#FFD700]">
+          <span className="bg-gradient-to-r  from-green-500 to-[#d6b704] inline-block text-transparent bg-clip-text">PIZZA</span>
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide3} alt="" />
-          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl -mt-20">
-            SOUP
+          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl -mt-20 font-rancho text-[#FFD700]">
+          <span className="bg-gradient-to-r  from-green-500 to-[#d6b704] inline-block text-transparent bg-clip-text">SOUP</span>
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide4} alt="" />
-          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl -mt-20">
-            DESERT
+          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl -mt-20 font-rancho text-[#FFD700] ">
+          <span className="bg-gradient-to-r  from-green-500 to-[#d6b704] inline-block text-transparent bg-clip-text">DESSERT</span>
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide5} alt="" />
-          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl -mt-20">
-            SALAD{" "}
+          <h3 className="font-bold text-center pr-5 text-xl md:text-3xl font-rancho -mt-20 text-[#FFD700]">
+          <span className="bg-gradient-to-r  from-green-500 to-[#d6b704] inline-block text-transparent bg-clip-text">SALAD</span>
           </h3>
         </SwiperSlide>
       </Swiper>

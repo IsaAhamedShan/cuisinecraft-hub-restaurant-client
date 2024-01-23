@@ -34,10 +34,10 @@ const FeaturedItemSection = () => {
           <div className="flex justify-center items-center">
             <div className="flex flex-col justify-center items-start m-auto max-w-[604px]">
               <p className="text-white py-2 m-auto md:m-0">10 MARCH,2023</p>
-              <h3 className="text-2xl text-white py-2 m-auto md:m-0">
+              <h3 className="text-2xl text-white font-raleway py-2 m-auto md:m-0">
                 Where I can get some?
               </h3>
-              <p className="text-normal text-white py-3 text-center md:text-left m-auto md:m-0" >
+              <p className="text-normal font-roboto text-white py-3 text-center md:text-left m-auto md:m-0" >
                 March 20, 2023 WHERE CAN I GET SOME? Lorem ipsum dolor sit amet
                 consectetur adipisicing elit. Error voluptate facere, deserunt
                 dolores maiores quod nobis quas quasi. Eaque repellat recusandae

@@ -40,28 +40,28 @@ const Navbar = () => {
   }, []);
   const navList = (
     <>
-      <li className="font-bold">
+      <li className="font-bold font-raleway">
         <Link to="/">HOME</Link>
-      </li>
-      <li className="font-bold">
+      </li> 
+      <li className="font-bold font-raleway">
         <Link to="/contactUs">CONTACT US</Link>
       </li>
-      <li className="font-bold">
+      <li className="font-bold font-raleway">
         <Link to="/dashboard">DASHBOARD</Link>
       </li>
-      <li className="font-bold">
-        <Link to="/ourMenu">OUR MENU</Link>
+      <li className="font-bold font-raleway">
+        <Link to="/ourMenu">MENU</Link>
       </li>
-      <li className="font-bold">
-        <Link to="/ourShop/salad">OUR SHOP</Link>
+      <li className="font-bold font-raleway">
+        <Link to="/ourShop/salad">SHOP</Link>
       </li>
-      <li className="font-bold">
+      <li className="font-bold font-raleway">
         <Link to="/signin">SIGN IN</Link>
       </li>
-      <li className="font-bold">
+      <li className="font-bold font-raleway">
         <Link to="/register">REGISTER</Link>
       </li>
-      <li className="font-bold" onClick={handleLogout}>
+      <li className="font-bold font-raleway" onClick={handleLogout}>
         <Link>LOGOUT</Link>
       </li>
     </>

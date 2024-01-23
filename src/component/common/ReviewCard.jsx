@@ -18,8 +18,8 @@ const ReviewCard = ({item}) => {
         <div className='flex flex-col justify-center items-center gap-6 max-w-5xl m-auto px-2 lg:px-0 [&>*]:py-3'>
             <Rating style={{ maxWidth: 300 }} value={rating2} onChange={setRating} itemStyles={myStyles}/>
             <img className='w-14 md:w-24' src={quote} alt="" />
-            <p className='text-normal text-center'>{details}</p>
-            <p className='text-3xl text-[#CD9003] text-center'>{name}</p>
+            <p className='text-normal text-center font-raleway'>{details}</p>
+            <p className='text-3xl text-[#CD9003] text-center font-roboto'>{name}</p>
         </div>
     );
 };

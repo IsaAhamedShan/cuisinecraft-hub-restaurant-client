@@ -8,15 +8,15 @@ import { FaMicrosoft } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import authenticationImg from "../../assets/others/authentication2.png";
-import { AuthContext } from "../provider/AuthProvider";
-import axios from 'axios';
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { AuthContext } from "../provider/AuthProvider";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { register } = useContext(AuthContext);
   const [captchaVal, setCaptchaVal] = useState(false);
+const recaptchaSiteKey = import.meta.env.VITE_recapthaSiteKey
   const handleNameChange = e => {
     setName(e.target.value);
   };
@@ -133,7 +133,7 @@ const axiosSecure = useAxiosSecure()
               <FaMicrosoft className="text-3xl" />
             </div>
           </div>
-          <ReCAPTCHA sitekey="6Lfv_lgpAAAAAIdVbA4ch5QKQPHn_JaUAofsNx58" onChange={onChange} />
+          <ReCAPTCHA sitekey={recaptchaSiteKey} onChange={onChange} />
         </div>
        
         {/* image */}
