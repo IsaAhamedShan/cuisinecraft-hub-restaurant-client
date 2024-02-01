@@ -4,9 +4,17 @@ import { Link } from "react-router-dom";
 import logoVertical from "../../../assets/main-logo/svg/logo-no-background-vertical.svg";
 import logo from "../../../assets/main-logo/svg/logo-no-background.svg";
 import { AuthContext } from "../../provider/AuthProvider";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { FaOpencart } from "react-icons/fa6";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCart from "../../Hooks/useCart";
 
 const Navbar = () => {
   const { logout } = useContext(AuthContext);
+  const [scrolling, setScrolling] = useState(false);
+  const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure()
+  const [cart] = useCart();
 
   const handleLogout = () => {
     logout()
@@ -25,8 +33,6 @@ const Navbar = () => {
         unsuccessLogout();
       });
   };
-  const [scrolling, setScrolling] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -42,7 +48,7 @@ const Navbar = () => {
     <>
       <li className="font-bold font-raleway">
         <Link to="/">HOME</Link>
-      </li> 
+      </li>
       <li className="font-bold font-raleway">
         <Link to="/contactUs">CONTACT US</Link>
       </li>
@@ -55,15 +61,31 @@ const Navbar = () => {
       <li className="font-bold font-raleway">
         <Link to="/ourShop/salad">SHOP</Link>
       </li>
-      <li className="font-bold font-raleway">
-        <Link to="/signin">SIGN IN</Link>
-      </li>
-      <li className="font-bold font-raleway">
-        <Link to="/register">REGISTER</Link>
-      </li>
-      <li className="font-bold font-raleway" onClick={handleLogout}>
-        <Link>LOGOUT</Link>
-      </li>
+      {user ? (
+        <li>
+          
+            <Link to='/cart'  className="flex gap-2">
+              <FaOpencart className="text-2xl" />
+              <div className="badge badge-secondary h-5">{cart && cart.length}</div>
+            </Link>
+          
+        </li>
+      ) : null}
+      {user ? null : (
+        <>
+          <li className="font-bold font-raleway">
+            <Link to="/signin">SIGN IN</Link>
+          </li>
+          <li className="font-bold font-raleway">
+            <Link to="/register">REGISTER</Link>
+          </li>
+        </>
+      )}
+      {user ? (
+        <li className="font-bold font-raleway" onClick={handleLogout}>
+          <Link>LOGOUT</Link>
+        </li>
+      ) : null}
     </>
   );
 
@@ -94,7 +116,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-md w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-md w-52 "
           >
             {navList}
           </ul>
@@ -106,14 +128,27 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        {/* <div className="block md:hidden">
-        <img src={logo} className="w-44" alt="" />
-        </div> */}
-        <ul className="menu menu-horizontal px-1">{navList}</ul>
+        <ul className="menu menu-horizontal px-1 flex justify-center items-center">
+          {navList}
+        </ul>
       </div>
-      {/* <div className="navbar-end">
-
-      </div> */}
+      <div className="">
+        {user ? (
+          <>
+            {user?.photoURL ? (
+              <Link className="px-4 w-24">
+                <img
+                  className="w-10 rounded-full"
+                  src={user.photoURL}
+                  alt="USERS_NAME"
+                />
+              </Link>
+            ) : (
+              <FaRegCircleUser className=" w-7 h-7 xl:w-10 xl:h-10 text-[#301c3b]" />
+            )}
+          </>
+        ) : null}
+      </div>
     </div>
   );
 };

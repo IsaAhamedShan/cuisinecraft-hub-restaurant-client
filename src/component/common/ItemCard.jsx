@@ -1,9 +1,70 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import toast, { Toaster } from "react-hot-toast";
+import useCart from "../Hooks/useCart";
 const ItemCard = ({ item }) => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { image, name, recipe } = item;
+  const location = useLocation();
+  const [cart, refetch] = useCart();
+  const axiosSecure = useAxiosSecure();
+  const successfullySaved =async () => {
+    await refetch();
+    toast.success("Added to cart");
+  };
+  const unSuccessfullySaved = () => {
+    toast.error("Couldn't add to cart");
+  };
+  const handleAddToCart = cartItem => {
+    // console.log(cartItem);
+    if (!user) {
+      Swal.fire({
+        title: "Please Sign in to add to cart",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes,Sign In",
+      }).then(result => {
+        if (result.isConfirmed) {
+          navigate("/signin", { state: { from: location } });
+        }
+      });
+    }
+    axiosSecure
+      .post("/addToCart", {
+        menuId: cartItem._id,
+        email: user.email,
+        name: cartItem.name,
+        image: cartItem.image,
+        category: cartItem.category,
+        price: cartItem.price,
+      })
+      .then(res => {
+        
+        console.log(res.status)
+        if (res.status === 200) {
+          successfullySaved();
+          //refetching cart to update the cart items count in navbar
+          refetch();
+          console.log("saved to db");
+        }
+      })
+      .catch(err => {
+        unSuccessfullySaved();
+
+        console.log(err);
+      });
+    // console.log(cartItem);
+  };
   return (
     <div>
+      <Toaster />
       <div className="card w-[400px] h-[541px] shadow-xl rounded-sm hover:scale-105 duration-200 cursor-pointer bg-gray-200 ">
         <figure>
           <img
@@ -13,10 +74,15 @@ const ItemCard = ({ item }) => {
           />
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title text-2xl font-semibold font-raleway">{name}</h2>
+          <h2 className="card-title text-2xl font-semibold font-raleway">
+            {name}
+          </h2>
           <p className="text-normal font-roboto">{recipe}</p>
           <div className="card-actions">
-            <button className="btn btn-wide rounded-md text-[#BB8506]  text-2xl  bg-gray-300 hover:bg-[#1F2937] border-b-4 border-x-0 border-t-0 border-yellow-700 hover:border-gray-500">
+            <button
+              className="btn btn-wide rounded-md text-[#BB8506]  text-2xl  bg-gray-300 hover:bg-[#1F2937] border-b-4 border-x-0 border-t-0 border-yellow-700 hover:border-gray-500"
+              onClick={() => handleAddToCart(item)}
+            >
               Add to Cart!
             </button>
           </div>
