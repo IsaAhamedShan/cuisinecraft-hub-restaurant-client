@@ -6,8 +6,9 @@ import SignIn from "../pages/SignIn";
 import OurMenu from "../pages/OurMenu/OurMenu";
 import OurShop from "../pages/OurShop/OurShop";
 import Cart from "../pages/Cart/Cart";
-import Mycart from "../pages/Dashboard/Mycart";
+
 import Dashboard from "../pages/Dashboard";
+import Mycart from "../pages/Dashboard/Mycart/Mycart.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
