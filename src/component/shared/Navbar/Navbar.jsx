@@ -64,7 +64,7 @@ const Navbar = () => {
       {user ? (
         <li>
           
-            <Link to='/cart'  className="flex gap-2">
+            <Link to='/dashboard/myCart'  className="flex gap-2">
               <FaOpencart className="text-2xl" />
               <div className="badge badge-secondary h-5">{cart && cart.length}</div>
             </Link>
