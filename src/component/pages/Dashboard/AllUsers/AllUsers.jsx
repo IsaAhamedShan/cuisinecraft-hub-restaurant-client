@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { Toaster, toast } from "react-hot-toast";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
-import SectionIntro from "../../../common/SectionIntro";
-import { AuthContext } from "../../../provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import SectionIntro from "../../../common/SectionIntro";
+import { AuthContext } from "../../../provider/AuthProvider";
 const AllUsers = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
@@ -72,7 +73,7 @@ const AllUsers = () => {
                 <th className="">#</th>
                 <th className="py-6  md:text-xl ">Name</th>
                 <th className="py-6  md:text-xl ">Email</th>
-                <th className="py-6  md:text-xl ">Role</th>
+                <th className="py-6 pl-5 md:text-xl ">Role</th>
                 <th className="py-6  md:text-xl ">Action</th>
               </tr>
             </thead>
@@ -97,7 +98,9 @@ const AllUsers = () => {
                       </td>
                       <td>{item.email} $</td>
                       <td>
-                        <RiDeleteBin6Line className=" text-red-600 hover:scale-105 duration-150  rounded-md cursor-pointer md:text-xl xl:text-2xl" />
+                        <button className="btn">
+                          <MdOutlineAdminPanelSettings className=" text-red-600 hover:scale-105 duration-150  rounded-md cursor-pointer md:text-xl xl:text-2xl" />
+                        </button>
                       </td>
                       <th>
                         <button
