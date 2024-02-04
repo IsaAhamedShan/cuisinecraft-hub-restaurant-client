@@ -1,11 +1,11 @@
 import { useContext } from "react";
+import { Toaster, toast } from "react-hot-toast";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useCart from "../../../Hooks/useCart";
 import SectionIntro from "../../../common/SectionIntro";
 import { AuthContext } from "../../../provider/AuthProvider";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { Toaster, toast } from "react-hot-toast";
-import Swal from "sweetalert2";
 const Mycart = () => {
   const [cart, refetch] = useCart();
   console.log("cart is:", cart);
@@ -14,7 +14,8 @@ const Mycart = () => {
   const totalValue = cart.reduce((accumulator, item) => {
     return (accumulator += parseInt(item.price));
   }, 0);
-  console.log("ttotal value :", totalValue);
+  console.log("🚀 ~ totalValue ~ totalValue:", totalValue);
+
   const { user } = useContext(AuthContext);
   const handleDeleteItem = _id => {
     Swal.fire({
@@ -23,21 +24,20 @@ const Mycart = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      background:'#ffffff',
+      background: "#ffffff",
       confirmButtonText: "Yes, delete it!",
-      
     }).then(result => {
       if (result.isConfirmed) {
         axiosSecure
           .delete(`/deleteCartItem/${_id}`)
-          .then((res) => {
+          .then(res => {
             if (res.data.deletedCount > 0) {
               refetch();
               deleteSuccess();
             }
           })
           .catch(err => {
-            console.log("error in mycart item delete: ", err);
+            console.log("🚀 ~ handleDeleteItem ~ err:", err);
           });
       }
     });
@@ -45,10 +45,7 @@ const Mycart = () => {
 
   return (
     <div>
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-      ></Toaster>
+      <Toaster position="top-right" reverseOrder={false}></Toaster>
       <SectionIntro
         heading="My Cart"
         text="WANNA ADD MORE?"

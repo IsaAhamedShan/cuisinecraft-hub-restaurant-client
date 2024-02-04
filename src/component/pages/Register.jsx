@@ -17,7 +17,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { register } = useContext(AuthContext);
   const [captchaVal, setCaptchaVal] = useState(false);
   const recaptchaSiteKey = import.meta.env.VITE_recapthaSiteKey;
@@ -35,14 +35,17 @@ const Register = () => {
   const axiosSecure = useAxiosSecure();
   function onChange(captchaValue) {
     axiosSecure
-      .post("/verify-recaptcha", {
+      .post("/verifyRecaptcha", {
         recaptchaValue: captchaValue,
       })
       .then(res => {
-        res.success === true ? setCaptchaVal(true) : setCaptchaVal(false);
+        setCaptchaVal(true);
+        console.log("res in verify-recaptcha :", res)
+        // res.success === true ? setCaptchaVal(true) : setCaptchaVal(false);
+        setCaptchaVal(true)
       })
       .catch(error => {
-        console.log("captcha error");
+        console.log("captcha error :",error);
       });
 
     console.log("Captcha value:", captchaValue);
@@ -57,11 +60,18 @@ const Register = () => {
       register(email, password)
         .then(res => {
           updateProfile(auth.currentUser, {
-            displayName: name
-          })
+            displayName: name,
+          });
           console.log("success sign up: ", res);
           successToast();
-          navigate('/')
+          axiosSecure.post("/users", {
+            email:email,
+            username:name
+          }).then(()=>{
+            console.log('user inserted successfully')
+          })
+          .catch(console.log('user could not insert'))
+          navigate("/");
         })
         .catch(error => {
           console.log("error from sign up: ", error);

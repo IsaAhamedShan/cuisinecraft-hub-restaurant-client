@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
-import Swal from "sweetalert2";
-import { useLocation, useNavigate } from "react-router-dom";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
 import toast, { Toaster } from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useCart from "../Hooks/useCart";
+import { AuthContext } from "../provider/AuthProvider";
 const ItemCard = ({ item }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -65,11 +65,11 @@ const ItemCard = ({ item }) => {
   return (
     <div>
       <Toaster />
-      <div className="card w-[400px] h-[541px] shadow-xl rounded-sm hover:scale-105 duration-200 cursor-pointer bg-gray-200 ">
+      <div className="card w-[400px] h-[541px] shadow-xl rounded-sm hover:scale-105 duration-200 cursor-pointer bg-yellow-100 ">
         <figure>
           <img
             src={image}
-            alt="Shoes"
+            alt="image"
             className="rounded-none min-w-[400px] min-h-[300px]"
           />
         </figure>
@@ -80,7 +80,7 @@ const ItemCard = ({ item }) => {
           <p className="text-normal font-roboto">{recipe}</p>
           <div className="card-actions">
             <button
-              className="btn btn-wide rounded-md text-[#BB8506]  text-2xl  bg-gray-300 hover:bg-[#1F2937] border-b-4 border-x-0 border-t-0 border-yellow-700 hover:border-gray-500"
+              className="btn btn-wide rounded-md text-[#BB8506]  text-2xl  bg-yellow-200 hover:bg-[#1F2937] border-b-4 border-x-0 border-t-0 border-yellow-700 hover:border-gray-500"
               onClick={() => handleAddToCart(item)}
             >
               Add to Cart!
