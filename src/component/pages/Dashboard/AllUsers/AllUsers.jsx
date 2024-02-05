@@ -4,6 +4,7 @@ import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { FaUser } from "react-icons/fa";
 
 import { useQuery } from "@tanstack/react-query";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -12,7 +13,7 @@ import { AuthContext } from "../../../provider/AuthProvider";
 const AllUsers = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-
+  const adminSuccess = () => toast.success("Promoted to Admin successfully");
   const deleteSuccess = () => toast.success("Item Deleted successfully");
 
   const handleDeleteUser = _id => {
@@ -48,6 +49,32 @@ const AllUsers = () => {
       return userData.data;
     },
   });
+  const makeAdmin = _id => {
+    Swal.fire({
+      title: "Make this User Admin?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then(result => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .patch(`/users/admin/${_id}`)
+          .then(res => {
+            console.log(res);
+            if (res.data.modifiedCount > 0) {
+              refetch();
+              adminSuccess();
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -96,11 +123,23 @@ const AllUsers = () => {
                           <br />
                         </div>
                       </td>
-                      <td>{item.email} $</td>
+                      <td>{item.email}</td>
                       <td>
-                        <button className="btn">
-                          <MdOutlineAdminPanelSettings className=" text-red-600 hover:scale-105 duration-150  rounded-md cursor-pointer md:text-xl xl:text-2xl" />
-                        </button>
+                        {item.role === "admin" ? (
+                          <button
+                            className="btn"
+                            onClick={() => makeAdmin(item._id)}
+                          >
+                            <MdOutlineAdminPanelSettings className=" text-red-600 hover:scale-105 duration-150  rounded-md cursor-pointer md:text-xl xl:text-2xl" />
+                          </button>
+                        ) : (
+                          <button
+                            className="btn"
+                            onClick={() => makeAdmin(item._id)}
+                          >
+                            <FaUser className=" text-red-600 hover:scale-105 duration-150  rounded-md cursor-pointer md:text-xl xl:text-2xl" />
+                          </button>
+                        )}
                       </td>
                       <th>
                         <button
