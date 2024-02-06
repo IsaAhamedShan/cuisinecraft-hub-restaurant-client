@@ -31,7 +31,6 @@ const AuthProvider = ({ children }) => {
         axiosPublic.post("/jwt", userInfo).then(res => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
-            
           }
         });
       } else {
@@ -42,7 +41,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unSubscribe();
     };
-  });
+  },[]);
   const authInfo = { user, register, login, logout };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

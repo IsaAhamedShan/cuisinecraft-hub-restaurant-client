@@ -1,4 +1,4 @@
-import React from "react";
+
 import { BiSolidContact } from "react-icons/bi";
 import { FaHome } from "react-icons/fa";
 import { FaBook, FaList, FaShop, FaUser } from "react-icons/fa6";
@@ -11,9 +11,11 @@ import { MdPayment } from "react-icons/md";
 import { IoMdCart } from "react-icons/io";
 import { MdOutlineRateReview } from "react-icons/md";
 import { BsCalendarDate } from "react-icons/bs";
+import useAdmin from "../Hooks/useAdmin";
 
 
 const Dashboard = () => {
+  const [isAdmin] = useAdmin()
   return (
     <div className="flex">
       <div className="w-72 min-h-[100vh] bg-red-300 ">

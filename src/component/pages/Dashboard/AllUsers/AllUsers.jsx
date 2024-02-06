@@ -44,7 +44,14 @@ const AllUsers = () => {
   const { data: usersList = [], refetch } = useQuery({
     queryKey: ["usersList", user?.email],
     queryFn: async () => {
-      const userData = await axiosSecure.get("/users");
+      const userData = await axiosSecure.get("/users",
+      // better option to use axios interceptor and set the headers there for all at once
+      // {
+      //   headers: {
+      //     authorization: `Bearer ${localStorage.getItem('access-token')}`
+      //   }
+      // }
+      );
       console.log(userData.data);
       return userData.data;
     },
@@ -126,10 +133,7 @@ const AllUsers = () => {
                       <td>{item.email}</td>
                       <td>
                         {item.role === "admin" ? (
-                          <button
-                            className="btn"
-                            onClick={() => makeAdmin(item._id)}
-                          >
+                          <button className="btn">
                             <MdOutlineAdminPanelSettings className=" text-red-600 hover:scale-105 duration-150  rounded-md cursor-pointer md:text-xl xl:text-2xl" />
                           </button>
                         ) : (
