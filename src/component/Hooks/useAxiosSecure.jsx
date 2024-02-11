@@ -35,7 +35,7 @@ const useAxiosSecure = () => {
    async error => {
       const status = error.response.status;
     //   console.log("🚀 ~ useAxiosSecure ~ status:", status);
-      if (status == (401 | 403)) {
+      if (status == (401 || 403)) {
         await logout()
           .then(() => {
             console.log("user logged out because of authorization issue");
