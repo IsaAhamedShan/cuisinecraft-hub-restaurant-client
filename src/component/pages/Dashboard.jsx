@@ -22,7 +22,7 @@ const Dashboard = () => {
         <img src={logo} className="w-52 p-6 pl-12" alt="" />
 
         {/* admin dashboard */}
-        <ul className="menu mb-10 border-white border-b-2 mx-6">
+        {isAdmin && <ul className="menu mb-10 border-white border-b-2 mx-6">
           <li className="">
             <NavLink
               to="/dashboard/adminHome"
@@ -64,7 +64,8 @@ const Dashboard = () => {
               <FaUser className="md:text-xl" ></FaUser>All Users
             </NavLink>
           </li>
-        </ul>
+        </ul>}
+        
         {/* user dashboard */}
         <ul className="menu mb-10 border-white border-b-2 mx-6">
           <li className="">

@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import ItemCard from "../../../common/ItemCard";
 import SectionIntro from "../../../common/SectionIntro";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const ChefRecommendation = () => {
   const [data, setData] = useState([]);
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   useEffect(() => {
-    axiosSecure
+    axiosPublic
       .get("/chef_recommendation")
       .then(res => {
 // console.log(res.data)
@@ -17,7 +18,7 @@ const ChefRecommendation = () => {
       .catch(error => {
         console.log(error);
       });
-  }, [axiosSecure]);
+  }, [axiosPublic]);
   return (
     <div className="my-20">
       <SectionIntro

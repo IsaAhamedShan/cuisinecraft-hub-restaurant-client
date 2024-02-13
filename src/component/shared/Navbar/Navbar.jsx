@@ -13,7 +13,7 @@ const Navbar = () => {
   const { logout } = useContext(AuthContext);
   const [scrolling, setScrolling] = useState(false);
   const { user } = useContext(AuthContext);
-  const axiosSecure = useAxiosSecure()
+  // const axiosSecure = useAxiosSecure()
   const [cart] = useCart();
 
   const handleLogout = () => {
