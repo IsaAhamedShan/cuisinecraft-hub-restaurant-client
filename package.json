@@ -14,6 +14,7 @@
     "@tanstack/react-query": "^5.18.0",
     "axios": "^1.6.5",
     "firebase": "^10.7.1",
+    "framer-motion": "^11.0.5",
     "jsonwebtoken": "^9.0.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.3",

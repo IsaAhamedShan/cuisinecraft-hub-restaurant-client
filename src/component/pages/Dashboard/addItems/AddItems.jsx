@@ -18,26 +18,26 @@ const success = ()=> toast.success("Item added Successfully")
 const unsuccess = ()=> toast.error("Couldn't add item")
   const onSubmit = async data => {
     console.log(data)
-    const imageFile = {image: data.imageFile[0]}
-    const res = await axiosPublic.post(image_hosting_api,imageFile, {
+    const image = {image: data.imageFile[0]}
+    const res = await axiosPublic.post(image_hosting_api,image, {
         headers:{
             'content-type': 'multipart/form-data'
         }
     })
-    data.imageFile = res.data.data.display_url
+    data.image = res.data.data.display_url
     console.log(data)
-    // axiosSecure
-    //   .post("/addItem", data)
-    //   .then(res => {
-    //     console.log(res);
-    //     if(res.data.insertedId){
-    //         success()
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //     unsuccess()
-    //   });
+    axiosSecure
+      .post("/addItem", data)
+      .then(res => {
+        console.log(res);
+        if(res.data.insertedId){
+            success()
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        unsuccess()
+      });
   };
 
   return (
