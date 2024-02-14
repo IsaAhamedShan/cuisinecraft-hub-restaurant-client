@@ -10,8 +10,9 @@ import Cart from "../pages/Cart/Cart";
 import Dashboard from "../pages/Dashboard";
 import Mycart from "../pages/Dashboard/Mycart/Mycart.jsx";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers.jsx";
-import AddItems from "../pages/Dashboard/addItems/addItems.jsx";
+
 import AdminRoutes from "./AdminRoutes.jsx";
+import AddItems from "../pages/Dashboard/AddItems/AddItems.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
