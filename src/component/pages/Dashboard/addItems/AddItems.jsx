@@ -45,7 +45,7 @@ const unsuccess = ()=> toast.error("Couldn't add item")
         <Toaster   position="top-right"
   reverseOrder={false}></Toaster>
       <SectionIntro heading="WHAT'S NEW" text="ADD AND ITEM"></SectionIntro>
-      <div className="max-w-5xl m-auto my-8">
+      <div className="max-w-5xl m-auto my-8 px-2 md:px-4 xl:px-0">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="p-10 bg-slate-300 rounded-md"

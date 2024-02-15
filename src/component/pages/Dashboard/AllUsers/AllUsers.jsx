@@ -130,7 +130,7 @@ const AllUsers = () => {
                           <br />
                         </div>
                       </td>
-                      <td>{item.email}</td>
+                      <td className="px-0 md:px-4">{item.email}</td>
                       <td>
                         {item.role === "admin" ? (
                           <button className="btn">
