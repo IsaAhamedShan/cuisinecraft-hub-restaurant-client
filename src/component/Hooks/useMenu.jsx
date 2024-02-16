@@ -3,10 +3,11 @@ import axios from "axios";
 import useAxiosSecure from "./useAxiosSecure";
 import useAxiosPublic from "./useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+
 const useMenu = categoryName => {
   const axiosPublic = useAxiosPublic();
 
-  const { data, isLoading, fetch } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["manageItem"],
     queryFn: async () => {
       const res = await axiosPublic.get("/menu");
@@ -18,7 +19,7 @@ const useMenu = categoryName => {
     },
   });
 
-  return [data, isLoading, fetch];
+  return [data, isLoading, refetch];
 };
 
 export default useMenu;

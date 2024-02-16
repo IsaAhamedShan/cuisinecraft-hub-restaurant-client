@@ -13,7 +13,8 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers.jsx";
 
 import AdminRoutes from "./AdminRoutes.jsx";
 import AddItems from "../pages/Dashboard/AddItems/AddItems.jsx";
-import ManageItem from "../pages/Home/ManageItem/ManageItem.jsx";
+import ManageItem from "../pages/Dashboard/ManageItem/ManageItem.jsx";
+import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path:"manageItems",
         element:<ManageItem></ManageItem>
+      },
+      {
+        path:"updateItem/:id",
+        element:<UpdateItem></UpdateItem>
       }
     ],
   },
