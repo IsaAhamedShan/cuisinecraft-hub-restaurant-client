@@ -13,6 +13,7 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers.jsx";
 
 import AdminRoutes from "./AdminRoutes.jsx";
 import AddItems from "../pages/Dashboard/AddItems/AddItems.jsx";
+import ManageItem from "../pages/Home/ManageItem/ManageItem.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path:"addItems",
         element:<AdminRoutes><AddItems></AddItems></AdminRoutes>
+      },
+      {
+        path:"manageItems",
+        element:<ManageItem></ManageItem>
       }
     ],
   },

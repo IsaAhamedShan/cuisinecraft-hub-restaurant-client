@@ -51,7 +51,7 @@ const Dashboard = () => {
             className="drawer-overlay"
           ></label>
           {/* drawer content */}
-          <div className="w-72 min-h-[100vh] bg-red-300 ">
+          <div className="w-72 min-h-[100vh] bg-red-300">
             <img src={logo} className="w-52 p-6 pl-12" alt="" />
 
             {/* admin dashboard */}
