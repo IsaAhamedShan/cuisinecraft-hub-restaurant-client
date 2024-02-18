@@ -4,7 +4,7 @@ import axios from "axios";
 import MenuItem from "../../../common/MenuItem";
 import useMenu from "../../../Hooks/useMenu";
 const PopularMenu = () => {
-  const [data, loading] = useMenu('popular');
+  const [data, isLoading, refetch] = useMenu('popular');
 
   // const popularItems = data.filter(item => item.category === "popular");
 
@@ -22,7 +22,7 @@ const PopularMenu = () => {
         </div> */}
       </div>
       <div className="grid grid-cols-1 py-5 md:py-10 md:grid-cols-2 justify-center items-center gap-10 ">
-        {data.map((item,index) => (
+        {data?.map((item,index) => (
           <MenuItem key={index} itemsList={item}></MenuItem>
         ))}
       </div>
