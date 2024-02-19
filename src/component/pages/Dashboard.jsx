@@ -1,19 +1,15 @@
+import { useEffect, useState } from "react";
 import { BiSolidContact } from "react-icons/bi";
+import { BsCalendarDate } from "react-icons/bs";
 import { FaHome } from "react-icons/fa";
 import { FaBook, FaList, FaShop, FaUser } from "react-icons/fa6";
 import { GiKnifeFork } from "react-icons/gi";
+import { IoMdCart, IoMdMenu } from "react-icons/io";
 import { LuMenu } from "react-icons/lu";
+import { MdDateRange, MdOutlineRateReview, MdPayment } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import logo from "../../assets/main-logo/svg/logo-no-background.svg";
-import { MdDateRange } from "react-icons/md";
-import { MdPayment } from "react-icons/md";
-import { IoMdCart } from "react-icons/io";
-import { MdOutlineRateReview } from "react-icons/md";
-import { BsCalendarDate } from "react-icons/bs";
 import useAdmin from "../Hooks/useAdmin";
-import { useEffect, useState } from "react";
-import { AnimatedHamburgerButton } from "../shared/Navbar/AnimatedHamburgerButton.jsx";
-import { IoMdMenu } from "react-icons/io";
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
@@ -31,7 +27,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex ">
       {/* drawer */}
       <div className="drawer">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -51,7 +47,7 @@ const Dashboard = () => {
             className="drawer-overlay"
           ></label>
           {/* drawer content */}
-          <div className="w-72 min-h-[100vh] bg-red-300">
+          <div className="w-72 min-h-[100vh] bg-red-300 sticky top-0">
             <img src={logo} className="w-52 p-6 pl-12" alt="" />
 
             {/* admin dashboard */}
@@ -102,7 +98,9 @@ const Dashboard = () => {
             )}
 
             {/* user dashboard */}
-            <ul className="menu mb-10 border-white border-b-2 mx-6">
+            {
+              !isAdmin &&
+              <ul className="menu mb-10 border-white border-b-2 mx-6">
               <li className="">
                 <NavLink
                   to="/dashboard/userHome"
@@ -157,6 +155,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </ul>
+            }
             {/* common dashboard */}
             <ul className="menu pl-8">
               <li>

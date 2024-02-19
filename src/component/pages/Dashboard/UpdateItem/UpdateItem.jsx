@@ -1,9 +1,9 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import { useLocation } from "react-router-dom";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SectionIntro from "../../../common/SectionIntro";
 
 const UpdateItem = () => {
@@ -39,7 +39,7 @@ const UpdateItem = () => {
       .patch(`/updateItem/${item._id}`, data)
       .then(res => {
         console.log(res);
-        if (res.status === 200) {
+        if (res.data.modifiedCount) {
           success();
         }
       })
