@@ -8,11 +8,11 @@ import { AuthContext } from "../provider/AuthProvider";
 const ItemCard = ({ item }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { image, name, recipe,price } = item;
+  const { image, name, recipe, price } = item;
   const location = useLocation();
   const [cart, refetch] = useCart();
   const axiosSecure = useAxiosSecure();
-  const successfullySaved =async () => {
+  const successfullySaved = async () => {
     await refetch();
     toast.success("Added to cart");
   };
@@ -46,8 +46,7 @@ const ItemCard = ({ item }) => {
         price: cartItem.price,
       })
       .then(res => {
-        
-        console.log(res.status)
+        console.log(res.status);
         if (res.status === 200) {
           successfullySaved();
           //refetching cart to update the cart items count in navbar
@@ -72,13 +71,16 @@ const ItemCard = ({ item }) => {
             alt="image"
             className="rounded-none w-full h-full relative"
           />
-          <div className="badge rounded-[4px] bg-yellow-300 border-none absolute top-5 right-5"><p className="py-4">{price}$</p></div>
+          <div className="badge rounded-[4px] bg-yellow-300 border-none absolute top-5 right-5">
+            <p className="py-4">{price}$</p>
+          </div>
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title text-2xl font-semibold font-raleway">
             {name}
           </h2>
-          <p className="text-normal font-roboto">{recipe}</p>
+          <p className="text-normal font-roboto ">{recipe}</p>
+
           <div className="card-actions">
             <button
               className="btn btn-wide rounded-md text-[#BB8506]  text-2xl  bg-yellow-200 hover:bg-[#1F2937] border-b-4 border-x-0 border-t-0 border-yellow-700 hover:border-gray-500"

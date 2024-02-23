@@ -5,7 +5,7 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const AdminRoutes = ({children}) => {
   const [isAdmin, isAdminLoading] = useAdmin();
-  console.log("is admin: ", isAdmin);
+  // console.log("is admin: ", isAdmin);
   const location = useLocation();
   const { user, loading } = useContext(AuthContext);
   if (loading || isAdminLoading)

@@ -177,7 +177,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/ourShop"
+                  to="/ourShop/salad"
                   className="flex gap-2 justify-start items-center py-3 md:text-xl"
                 >
                   <FaShop className="md:text-xl"></FaShop>Shop
@@ -185,7 +185,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/contactUs"
+                  to="/contactUs"
                   className="flex gap-2 justify-start items-center py-3 md:text-xl"
                 >
                   <BiSolidContact className="md:text-xl" />

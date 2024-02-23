@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useCart from "../../../Hooks/useCart";
 import SectionIntro from "../../../common/SectionIntro";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { Link } from "react-router-dom";
 const Mycart = () => {
   const [cart, refetch] = useCart();
   console.log("cart is:", cart);
@@ -60,9 +61,17 @@ const Mycart = () => {
           <p className="text-lg md:text-2xl lg:text-3xl">
             Total Price: {totalValue && totalValue} $
           </p>
-          <button className="btn btn-outline bg-red-300 hover:bg-red-400 border-none px-6">
-            <p className="text-lg">Pay</p>
-          </button>
+          {cart.length > 0 ? (
+            <button className="btn btn-outline bg-red-300 hover:bg-red-400 border-none px-6">
+              <Link to="/dashboard/payment">
+                <p className="text-lg">Pay</p>
+              </Link>
+            </button>
+          ) : (
+            <button disabled className="btn disabled btn-outline bg-red-300 hover:bg-red-400 border-none px-6">
+              <p className="text-lg">Pay</p>
+            </button>
+          )}
         </div>
         {/* table */}
         <div className="overflow-x-auto max-w-7xl mx-auto">
