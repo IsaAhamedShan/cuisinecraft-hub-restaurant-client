@@ -1,21 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
+import Cart from "../pages/Cart/Cart";
 import Home from "../pages/Home/Home";
 import Main from "../pages/Main";
-import Register from "../pages/Register";
-import SignIn from "../pages/SignIn";
 import OurMenu from "../pages/OurMenu/OurMenu";
 import OurShop from "../pages/OurShop/OurShop";
-import Cart from "../pages/Cart/Cart";
+import Register from "../pages/Register";
+import SignIn from "../pages/SignIn";
 
 import Dashboard from "../pages/Dashboard";
-import Mycart from "../pages/Dashboard/Mycart/Mycart.jsx";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers.jsx";
+import Mycart from "../pages/Dashboard/Mycart/Mycart.jsx";
 
-import AdminRoutes from "./AdminRoutes.jsx";
+import ContactUs from "../pages/ContactUs/ContactUs.jsx";
 import AddItems from "../pages/Dashboard/AddItems/AddItems.jsx";
 import ManageItem from "../pages/Dashboard/ManageItem/ManageItem.jsx";
-import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem.jsx";
 import Payment from "../pages/Dashboard/Payment/Payment.jsx";
+import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem.jsx";
+import AdminRoutes from "./AdminRoutes.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart></Cart>,
       },
+      {
+        path:'/contactUs',
+        element:<ContactUs></ContactUs>
+      }
     ],
   },
   {
