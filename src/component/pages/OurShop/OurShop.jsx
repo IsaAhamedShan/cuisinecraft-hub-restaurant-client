@@ -68,28 +68,28 @@ const OurShop = () => {
 
         <TabPanel className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-8 justify-center items-center py-20">
-            {salad.map(item => (
+            {data && salad.map(item => (
               <ItemCard key={item._id} item={item}></ItemCard>
             ))}
           </div>
         </TabPanel>
         <TabPanel className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-8 justify-center items-center py-20">
-            {pizza.map(item => (
+            {data && pizza.map(item => (
               <ItemCard key={item._id} item={item}></ItemCard>
             ))}
           </div>
         </TabPanel>
         <TabPanel className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-8 justify-center items-center py-20">
-            {soup.map(item => (
+            {data && soup.map(item => (
               <ItemCard key={item._id} item={item}></ItemCard>
             ))}
           </div>
         </TabPanel>
         <TabPanel className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-8 justify-center items-center py-20">
-            {dessert.map(item => (
+            {data && dessert.map(item => (
               <ItemCard key={item._id} item={item}></ItemCard>
             ))}
           </div>
