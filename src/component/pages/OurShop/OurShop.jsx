@@ -14,11 +14,11 @@ const OurShop = () => {
   console.log("category name: " + categoryName);
   const [tabIndex, setTabIndex] = useState(arr.indexOf(categoryName));
   const [data] = useMenu("");
-  console.log("data is:", data);
-  const dessert = data.filter(item => item.category === "dessert");
-  const salad = data.filter(item => item.category === "salad");
-  const pizza = data.filter(item => item.category === "pizza");
-  const soup = data.filter(item => item.category === "soup");
+  // console.log("data is:", data);
+  const dessert = data && data.filter(item => item.category === "dessert");
+  const salad = data && data.filter(item => item.category === "salad");
+  const pizza = data && data.filter(item => item.category === "pizza");
+  const soup = data && data.filter(item => item.category === "soup");
   const coverDetails = {
     image: banner2,
     heading: "SHOP",
@@ -68,30 +68,38 @@ const OurShop = () => {
 
         <TabPanel className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-8 justify-center items-center py-20">
-            {data && salad.map(item => (
-              <ItemCard key={item._id} item={item}></ItemCard>
-            ))}
+            {Array.isArray(data)
+              ? salad.map(item => (
+                  <ItemCard key={item._id} item={item}></ItemCard>
+                ))
+              : null}
           </div>
         </TabPanel>
         <TabPanel className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-8 justify-center items-center py-20">
-            {data && pizza.map(item => (
-              <ItemCard key={item._id} item={item}></ItemCard>
-            ))}
+            {Array.isArray(data)
+              ? pizza.map(item => (
+                  <ItemCard key={item._id} item={item}></ItemCard>
+                ))
+              : null}
           </div>
         </TabPanel>
         <TabPanel className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-8 justify-center items-center py-20">
-            {data && soup.map(item => (
-              <ItemCard key={item._id} item={item}></ItemCard>
-            ))}
+            {Array.isArray(data)
+              ? soup.map(item => (
+                  <ItemCard key={item._id} item={item}></ItemCard>
+                ))
+              : null}
           </div>
         </TabPanel>
         <TabPanel className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-8 justify-center items-center py-20">
-            {data && dessert.map(item => (
-              <ItemCard key={item._id} item={item}></ItemCard>
-            ))}
+            {Array.isArray(data)
+              ? dessert.map(item => (
+                  <ItemCard key={item._id} item={item}></ItemCard>
+                ))
+              : null}
           </div>
         </TabPanel>
       </Tabs>

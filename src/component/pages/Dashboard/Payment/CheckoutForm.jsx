@@ -1,14 +1,31 @@
 import {
   CardElement,
-  PaymentElement,
   useElements,
   useStripe
 } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-
+import { useEffect, useState } from "react";
+import useAxiosSecure from '../../../Hooks/useAxiosSecure.jsx';
+import useCart from '../../../Hooks/useCart'
 const CheckoutForm =  () => {
   const stripe = useStripe();
   const elements = useElements();
+const [error,setError] = useState();
+const axiosSecure = useAxiosSecure();
+const [cart,refetch] = useCart();
+console.log("🚀 ~ CheckoutForm ~ cart:", cart)
+
+const [clientSecret,setClientSecret] = useState()
+const totalPrice = cart.reduce((accumulator,current)=>accumulator+=current.price,0)
+console.log("🚀 ~ CheckoutForm ~ price:",totalPrice)
+
+// useEffect( ()=>{
+// axiosSecure.post('/create-payment-intent',{price:totalPrice})
+// .then(res=>{
+//   console.log(res.data.clientSecret)
+//   setClientSecret(res.data.clientSecret)
+// })
+
+// },[axiosSecure,totalPrice])
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -24,12 +41,15 @@ const CheckoutForm =  () => {
   });
   if (error) {
     console.log("payment error ", error);
+    setError(error.message)
   } else {
     console.log("payment method ", paymentMethod);
+    setError(null)
   }
 }
   return (
-    <form className="max-w-5xl my-10 m-auto" onSubmit={handleSubmit}>
+    <div>
+      <form className="max-w-5xl my-10 m-auto" onSubmit={handleSubmit}>
       <CardElement
         options={{
           style: {
@@ -46,10 +66,16 @@ const CheckoutForm =  () => {
           },
         }}
       />
-      <button className="btn btn-primary" type="submit" disabled={!stripe}>
+      <button className="btn btn-primary" type="submit" disabled={!stripe || !clientSecret}>
         Pay
       </button>
     </form>
+    {
+      error && <p>Error:${error}</p>
+    }
+    
+    </div>
+
   );
 };
 
