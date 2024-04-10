@@ -14,13 +14,17 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const axiosPublic = useAxiosPublic();
   const [user, setUser] = useState(null);
+  const [loading,setLoading] = useState(true);
   const register = (email, password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const login = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
   const logout = () => {
+    setLoading(true)
     return signOut(auth);
   };
   useEffect(() => {
@@ -31,10 +35,12 @@ const AuthProvider = ({ children }) => {
         axiosPublic.post("/jwt", userInfo).then(res => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
+            setLoading(false)
           }
         });
       } else {
         localStorage.removeItem("access-token");
+        setLoading(false)
       }
       console.log("Current User: ", user);
     });
@@ -42,7 +48,7 @@ const AuthProvider = ({ children }) => {
       unSubscribe();
     };
   },[]);
-  const authInfo = { user, register, login, logout };
+  const authInfo = { user, register, login, logout,loading };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

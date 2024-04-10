@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import useAxiosSecure from "./useAxiosSecure";
-import useAxiosPublic from "./useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "./useAxiosPublic";
 
 const useMenu = categoryName => {
   const axiosPublic = useAxiosPublic();
@@ -14,7 +11,7 @@ const useMenu = categoryName => {
       const filteredData = categoryName
       ? res.data.filter(item => item.category === categoryName)
       : res.data;
-      console.log(filteredData);
+      // console.log(filteredData);
       return filteredData;
     },
   });

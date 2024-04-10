@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
-import useAxiosSecure from "./useAxiosSecure.jsx";
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider.jsx";
+import useAxiosSecure from "./useAxiosSecure.jsx";
 const useCart = () => {
   //if i use useState to set data then refetch wont work cause it is not directly connected to useQuery
     // const [cart, setCart] = useState();

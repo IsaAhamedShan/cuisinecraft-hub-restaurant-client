@@ -5,7 +5,7 @@ import Navbar from '../shared/Navbar/Navbar';
 const Main = () => {
 const [theme, setTheme] = useState('light');
 const location = useLocation()
-console.log(location)
+// console.log(location)
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);

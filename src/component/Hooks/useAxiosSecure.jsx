@@ -28,7 +28,7 @@ const useAxiosSecure = () => {
       }
     }
   );
-  axiosSecure.interceptors.response.use(
+  axiosSecure.interceptors.response?.use(
     response => {
       return response;
     },

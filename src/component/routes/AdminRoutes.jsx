@@ -10,7 +10,7 @@ const AdminRoutes = ({children}) => {
   const { user, loading } = useContext(AuthContext);
   if (loading || isAdminLoading)
     return (
-      <div className="text-5xl flex justify-center items-center h-[90vh]"></div>
+      <div className="text-5xl flex justify-center items-center h-[90vh]">Loading</div>
     );
   if (user && isAdmin) return children;
   return <Navigate to="/signin" state={{ from: location }} replace></Navigate>;

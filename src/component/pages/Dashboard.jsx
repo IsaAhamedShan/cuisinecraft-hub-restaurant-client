@@ -11,7 +11,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import logo from "../../assets/main-logo/svg/logo-no-background.svg";
 import useAdmin from "../Hooks/useAdmin";
 const Dashboard = () => {
-  const [isAdmin] = useAdmin();
+  // const [isAdmin] = useAdmin();
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const Dashboard = () => {
             <img src={logo} className="w-52 p-6 pl-12" alt="" />
 
             {/* admin dashboard */}
-            {isAdmin && (
+            { (
               <ul className="menu mb-10 border-white border-b-2 mx-6">
                 <li className="">
                   <NavLink
@@ -99,7 +99,7 @@ const Dashboard = () => {
 
             {/* user dashboard */}
             {
-              !isAdmin &&
+              
               <ul className="menu mb-10 border-white border-b-2 mx-6">
               <li className="">
                 <NavLink
