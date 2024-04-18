@@ -18,6 +18,8 @@ import Payment from "../pages/Dashboard/Payment/Payment.jsx";
 import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem.jsx";
 import AdminRoutes from "./AdminRoutes.jsx";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory.jsx";
+import UserHome from "../UserHome/UserHome.jsx";
+import AdminHome from "../AdminHome/AdminHome.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,9 +50,9 @@ const router = createBrowserRouter([
         element: <Cart></Cart>,
       },
       {
-        path:'/contactUs',
-        element:<ContactUs></ContactUs>
-      }
+        path: "/contactUs",
+        element: <ContactUs></ContactUs>,
+      },
     ],
   },
   {
@@ -58,36 +60,59 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
+        path: "userHome",
+        element: <UserHome></UserHome>,
+      },
+      {
+        path: "AdminHome",
+        element: <AdminHome></AdminHome>,
+      },
+      {
         path: "myCart",
         element: <Mycart></Mycart>,
       },
       {
-        path:"payment",
-        element:<Payment></Payment>
+        path: "payment",
+        element: <Payment></Payment>,
       },
 
       {
-        path:'allUsers',
-        element:<AdminRoutes><AllUsers></AllUsers></AdminRoutes>
+        path: "allUsers",
+        element: (
+          <AdminRoutes>
+            <AllUsers></AllUsers>
+          </AdminRoutes>
+        ),
       },
       {
-        path:"manageItems",
-        element:<AdminRoutes><ManageItem></ManageItem></AdminRoutes>
+        path: "manageItems",
+        element: (
+          <AdminRoutes>
+            <ManageItem></ManageItem>
+          </AdminRoutes>
+        ),
       },
       {
-        path:"updateItem/:id",
-        element:<AdminRoutes><UpdateItem></UpdateItem></AdminRoutes>
-      }
-      ,
+        path: "updateItem/:id",
+        element: (
+          <AdminRoutes>
+            <UpdateItem></UpdateItem>
+          </AdminRoutes>
+        ),
+      },
       //admin only routes
       {
-        path:"addItems",
-        element:<AdminRoutes><AddItems></AddItems></AdminRoutes>
+        path: "addItems",
+        element: (
+          <AdminRoutes>
+            <AddItems></AddItems>
+          </AdminRoutes>
+        ),
       },
       {
-        path:"paymentHistory",
-        element:<PaymentHistory></PaymentHistory>
-      }
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
+      },
     ],
   },
 ]);

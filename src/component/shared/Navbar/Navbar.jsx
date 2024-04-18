@@ -9,6 +9,7 @@ import { FaOpencart } from "react-icons/fa6";
 // import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useCart from "../../Hooks/useCart";
 import { AnimatedHamburgerButton } from "./AnimatedHamburgerButton";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const { logout } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const Navbar = () => {
   const { user } = useContext(AuthContext);
   // const axiosSecure = useAxiosSecure()
   const [cart] = useCart();
+  const [isAdmin] = useAdmin();
 
   const handleLogout = () => {
     logout()
@@ -53,9 +55,16 @@ const Navbar = () => {
       <li className="font-bold font-raleway">
         <Link to="/contactUs">CONTACT US</Link>
       </li>
-      <li className="font-bold font-raleway">
-        <Link to="/dashboard">DASHBOARD</Link>
-      </li>
+      {user && isAdmin ? (
+        <li className="font-bold font-raleway">
+          <Link to="/dashboard/adminHome">DASHBOARD</Link>
+        </li>
+      ) : (
+        <li className="font-bold font-raleway">
+          <Link to="/dashboard/userHome">DASHBOARD</Link>
+        </li>
+      )}
+
       <li className="font-bold font-raleway">
         <Link to="/ourMenu">MENU</Link>
       </li>
@@ -64,12 +73,12 @@ const Navbar = () => {
       </li>
       {user ? (
         <li>
-          
-            <Link to='/dashboard/myCart'  className="flex gap-2">
-              <FaOpencart className="text-2xl" />
-              <div className="badge badge-secondary h-5">{cart && cart.length}</div>
-            </Link>
-          
+          <Link to="/dashboard/myCart" className="flex gap-2">
+            <FaOpencart className="text-2xl" />
+            <div className="badge badge-secondary h-5">
+              {cart && cart.length}
+            </div>
+          </Link>
         </li>
       ) : null}
       {user ? null : (
