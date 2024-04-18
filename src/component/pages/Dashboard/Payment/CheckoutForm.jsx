@@ -1,10 +1,10 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure.jsx";
 import useCart from "../../../Hooks/useCart";
 import { AuthContext } from "../../../provider/AuthProvider.jsx";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
@@ -111,48 +111,21 @@ const CheckoutForm = () => {
   };
   return (
     <div>
-      {/* <form className="max-w-3xl my-10 mx-auto" onSubmit={handleSubmit}>
-  <div className="border border-gray-300 rounded-lg p-4">
-    <CardElement
-      options={{
-        style: {
-          base: {
-            fontSize: "16px",
-            color: "#424770",
-            "::placeholder": {
-              color: "#aab7c4",
-            },
-          },
-          invalid: {
-            color: "#9e2146",
-          },
-        },
-      }}
-    />
-  </div>
-  <button
-    className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    type="submit"
-    disabled={!stripe || !clientSecret}
-  >
-    Pay
-  </button>
-</form> */}
-      <form className="max-w-3xl mx-4 lg:mx-auto my-10 rounded-lg p-8 bg-white shadow-lg">
+      <form
+        className="max-w-3xl my-10 mx-4 lg:mx-auto shadow-lg p-4 md:p-6 lg:p-8"
+        onSubmit={handleSubmit}
+      >
         <div className="border border-gray-300 rounded-lg p-4">
           <CardElement
             options={{
               style: {
                 base: {
                   fontSize: "16px",
-
                   color: "#424770",
-
                   "::placeholder": {
                     color: "#aab7c4",
                   },
                 },
-
                 invalid: {
                   color: "#9e2146",
                 },
@@ -160,9 +133,8 @@ const CheckoutForm = () => {
             }}
           />
         </div>
-
         <button
-          className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+          className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
           type="submit"
           disabled={!stripe || !clientSecret}
         >
