@@ -7,27 +7,33 @@ const axiosSecure = axios.create({
   // withCredentials:true
 });
 const useAxiosSecure = () => {
+  const accessToken = localStorage.getItem("access-token")
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
   //request interceptor to add authorization header for every secure call to the api
-  axiosSecure.interceptors.request.use(
-    config => {
-      // console.log(res)
-    //   console.log("insider interceptor, config :", config);
-      config.headers.authorization = `Bearer ${localStorage.getItem(
-        "access-token"
-      )}`;
-      return config;
-    },
-    error => {
-      if (error.status === (401 || 403)) {
-        console.log("error status is ", error.status);
-        console.log("logOut user.");
-      } else {
-        console.log("error status is ", error.status);
+  if(accessToken){
+    axiosSecure.interceptors.request.use(
+      config => {
+        // console.log(res)
+        console.log(`token: ${localStorage.getItem(
+          "access-token"
+        )}`,)
+        config.headers.authorization = `Bearer ${localStorage.getItem(
+          "access-token"
+        )}`;
+          console.log("insider interceptor, config :", config);
+        return config;
+      },
+      error => {
+        if (error.status === (401 || 403)) {
+          console.log("error status is ", error.status);
+          console.log("logOut user.");
+        } else {
+          console.log("error status is ", error.status);
+        }
       }
-    }
-  );
+    );
+  }
   axiosSecure.interceptors.response?.use(
     response => {
       return response;

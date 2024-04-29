@@ -34,20 +34,22 @@ const AuthProvider = ({ children }) => {
         const userInfo = { email: currentUser.email };
         axiosPublic.post("/jwt", userInfo).then(res => {
           if (res.data.token) {
+            console.log("setting the access token to localdb.")
             localStorage.setItem("access-token", res.data.token);
             setLoading(false)
           }
         });
       } else {
-        localStorage.removeItem("access-token");
-        setLoading(false)
+        // console.log("removing access token from local db")
+        // localStorage.removeItem("access-token");
+        setLoading(true)
       }
       console.log("Current User: ", user);
     });
     return () => {
       unSubscribe();
     };
-  },[]);
+  },[axiosPublic,user]);
   const authInfo = { user, register, login, logout,loading };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

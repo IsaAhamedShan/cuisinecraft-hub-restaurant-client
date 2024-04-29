@@ -13,6 +13,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { AuthContext } from "../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,6 +33,7 @@ const Register = () => {
   };
   const successToast = () => toast.success("Registration Success");
   const unsuccessfulToast = () => toast.error("Registration Unsuccess");
+  const axiosPublic = useAxiosPublic()
   const axiosSecure = useAxiosSecure();
   function onChange(captchaValue) {
     axiosSecure
@@ -64,7 +66,7 @@ const Register = () => {
           });
           console.log("success sign up: ", res);
           successToast();
-          axiosSecure.post("/users", {
+          axiosPublic.post("/users", {
             email:email,
             username:name
           }).then(()=>{

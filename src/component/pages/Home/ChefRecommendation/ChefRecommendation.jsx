@@ -1,8 +1,7 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import ItemCard from "../../../common/ItemCard";
 import SectionIntro from "../../../common/SectionIntro";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const ChefRecommendation = () => {
@@ -26,7 +25,7 @@ const ChefRecommendation = () => {
         text={"CHEF RECOMMENDS"}
       ></SectionIntro>
       <div className="flex justify-center items-center flex-wrap gap-6 my-5 md:py-10">
-        {data.map(item => (
+        {data && data?.map(item => (
           <ItemCard key={item._id} item={item}></ItemCard>
         ))}
       </div>

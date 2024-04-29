@@ -22,6 +22,7 @@ import {
 import { Helmet } from "react-helmet-async";
 import { auth } from "../firebase/firebase.config";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 const SignIn = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,6 +37,7 @@ const SignIn = () => {
   const handlePasswordChange = e => {
     setPassword(e.target.value);
   };
+  const axiosPublic = useAxiosPublic();
   const successToast = () => toast.success("SignIn Success");
   const unsuccessfulToast = () => toast.error("SignIn Unsuccess");
   const googleProvider = new GoogleAuthProvider();
@@ -59,8 +61,7 @@ const SignIn = () => {
       .then(() => {
         // console.log(user.email, user.displayName);
         successToast();
-
-        axiosSecure
+        axiosPublic
           .post("/users", {
             email: auth.currentUser.email,
             username: auth.currentUser.displayName,

@@ -13,7 +13,7 @@ import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const { logout } = useContext(AuthContext);
-  const [scrolling, setScrolling] = useState(false);
+  // const [scrolling, setScrolling] = useState(false);
   const { user } = useContext(AuthContext);
   // const axiosSecure = useAxiosSecure()
   const [cart] = useCart();
@@ -25,6 +25,8 @@ const Navbar = () => {
         console.log("user logged out");
         const successLogout = () => {
           toast.success("User logged out");
+          console.log("removing access token from local db");
+          localStorage.removeItem("access-token");
         };
         successLogout();
       })
@@ -36,17 +38,17 @@ const Navbar = () => {
         unsuccessLogout();
       });
   };
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolling(true);
-      } else setScrolling(false);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 50) {
+  //       setScrolling(true);
+  //     } else setScrolling(false);
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   const navList = (
     <>
       <li className="font-bold font-raleway">
@@ -101,9 +103,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`navbar ${
-        scrolling ? "bg-[#F3F3B7] opacity-60 text-gray-700" : "bg-[#F3F3B7]"
-      }  h-16 md:h-[110px] px-10 transition-all duration-300 fixed z-10`}
+      className={`navbar ${"bg-[#F3F3B7]"}  h-16 md:h-[110px] px-10 transition-all duration-300 fixed z-10`}
     >
       <div className="navbar-start w-full ">
         <Toaster></Toaster>
