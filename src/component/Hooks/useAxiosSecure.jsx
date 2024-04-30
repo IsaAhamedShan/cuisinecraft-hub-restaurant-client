@@ -15,13 +15,13 @@ const useAxiosSecure = () => {
     axiosSecure.interceptors.request.use(
       config => {
         // console.log(res)
-        console.log(`token: ${localStorage.getItem(
-          "access-token"
-        )}`,)
+        // console.log(`token: ${localStorage.getItem(
+        //   "access-token"
+        // )}`,)
         config.headers.authorization = `Bearer ${localStorage.getItem(
           "access-token"
         )}`;
-          console.log("insider interceptor, config :", config);
+          // console.log("insider interceptor, config :", config);
         return config;
       },
       error => {
