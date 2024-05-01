@@ -6,6 +6,8 @@ import { IoIosPeople } from "react-icons/io";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdFastfood } from "react-icons/md";
 import { GrMoney } from "react-icons/gr";
+import AdminHomePieChart from "./AdminHomePieChart";
+import AdminHomeTowerChart from "./AdminHomeTowerChart";
 
 const AdminHome = () => {
   const { user } = useContext(AuthContext);
@@ -14,55 +16,79 @@ const AdminHome = () => {
   const { data } = useQuery({
     queryKey: ["admin-stats"],
     queryFn: async () => {
-      let response = await axiosSecure.get("admin-stats");
-      console.log("data in admin home: ", response.data);
-      return response.data;
+      let responseAdminStats = await axiosSecure.get("admin-stats");
+      let responseSoldStats = await axiosSecure.get("sold-stats");
+      console.log(
+        "data in admin home: ",
+        responseAdminStats.data,
+        responseSoldStats.data
+      );
+      return [responseSoldStats.data, responseAdminStats.data];
     },
   });
   return (
     <>
-      <div className="flex justify-center items-center ">
-        <p className="text-4xl font-bold mt-8 mb-6 text-center">
-          Restaurant Stats
-        </p>
-      </div>
-      <div className="max-w-7xl m-auto flex justify-center items-center">
-        <div className="stats shadow">
-          <div className="stat">
-            <div className="stat-figure text-secondary">
-              <GrMoney className="text-3xl text-pink-500" />
+      <div>
+        <div className="flex justify-center items-center ">
+          <p className="text-4xl font-bold mt-8 mb-6 text-center">
+            Restaurant Stats
+          </p>
+        </div>
+        <div className="max-w-7xl m-auto flex justify-center items-center">
+          <div className="stats shadow">
+            <div className="stat">
+              <div className="stat-figure text-secondary">
+                <GrMoney className="text-3xl text-pink-500" />
+              </div>
+              <div className="stat-title">Revenue</div>
+              <div className="stat-value font-normal">
+                {data && data[1].revenue}
+              </div>
+              {/* <div className="stat-desc">Jan 1st - Feb 1st</div> */}
             </div>
-            <div className="stat-title">Revenue</div>
-            <div className="stat-value">{data && data?.revenue}</div>
-            {/* <div className="stat-desc">Jan 1st - Feb 1st</div> */}
-          </div>
-
-          <div className="stat">
-            <div className="stat-figure text-secondary">
-              <IoIosPeople className="text-3xl text-pink-500" />
+            <div className="stat">
+              <div className="stat-figure text-secondary">
+                <IoIosPeople className="text-3xl text-pink-500" />
+              </div>
+              <div className="stat-title">Users</div>
+              <div className="stat-value font-normal">
+                {data && data[1].users}
+              </div>
+              {/* <div className="stat-desc">↗︎ 400 (22%)</div> */}
             </div>
-            <div className="stat-title">Users</div>
-            <div className="stat-value">{data && data?.users}</div>
-            {/* <div className="stat-desc">↗︎ 400 (22%)</div> */}
-          </div>
-
-          <div className="stat">
-            <div className="stat-figure text-secondary">
-              <TbTruckDelivery className="text-3xl text-pink-500" />
+            <div className="stat">
+              <div className="stat-figure text-secondary">
+                <TbTruckDelivery className="text-3xl text-pink-500" />
+              </div>
+              <div className="stat-title">Orders</div>
+              <div className="stat-value font-normal">
+                {data && data[1].orders}
+              </div>
+              {/* <div className="stat-desc">↘︎ 90 (14%)</div> */}
             </div>
-            <div className="stat-title">Orders</div>
-            <div className="stat-value">{data && data?.orders}</div>
-            {/* <div className="stat-desc">↘︎ 90 (14%)</div> */}
-          </div>
-          <div className="stat">
-            <div className="stat-figure text-secondary">
-              <MdFastfood className="text-3xl text-pink-500" />
+            <div className="stat">
+              <div className="stat-figure text-secondary">
+                <MdFastfood className="text-3xl text-pink-500" />
+              </div>
+              <div className="stat-title">Items</div>
+              <div className="stat-value font-normal">
+                {data && data[1].menuItems}
+              </div>
+              {/* <div className="stat-desc">↘︎ 90 (14%)</div> */}
             </div>
-            <div className="stat-title">Items</div>
-            <div className="stat-value">{data && data?.menuItems}</div>
-            {/* <div className="stat-desc">↘︎ 90 (14%)</div> */}
           </div>
         </div>
+      </div>
+      {/* charts */}
+      <div>
+        {
+          data && 
+        <AdminHomePieChart soldData = {data[0]} totalRevenue = {data[1].revenue}></AdminHomePieChart>
+        }
+        {
+          data && <AdminHomeTowerChart soldData = {data[0]}></AdminHomeTowerChart>
+        }
+       
       </div>
     </>
   );
