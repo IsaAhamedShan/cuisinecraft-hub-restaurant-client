@@ -38,7 +38,7 @@ const AdminHome = () => {
           <div className="stats shadow">
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <GrMoney className="text-3xl text-pink-500" />
+                <GrMoney className="text-3xl text-blue-500" />
               </div>
               <div className="stat-title">Revenue</div>
               <div className="stat-value font-normal">
@@ -48,7 +48,7 @@ const AdminHome = () => {
             </div>
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <IoIosPeople className="text-3xl text-pink-500" />
+                <IoIosPeople className="text-3xl text-blue-500" />
               </div>
               <div className="stat-title">Users</div>
               <div className="stat-value font-normal">
@@ -58,7 +58,7 @@ const AdminHome = () => {
             </div>
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <TbTruckDelivery className="text-3xl text-pink-500" />
+                <TbTruckDelivery className="text-3xl text-blue-500" />
               </div>
               <div className="stat-title">Orders</div>
               <div className="stat-value font-normal">
@@ -68,7 +68,7 @@ const AdminHome = () => {
             </div>
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <MdFastfood className="text-3xl text-pink-500" />
+                <MdFastfood className="text-3xl text-blue-500" />
               </div>
               <div className="stat-title">Items</div>
               <div className="stat-value font-normal">
@@ -80,14 +80,21 @@ const AdminHome = () => {
         </div>
       </div>
       {/* charts */}
-      <div>
+      <div className="flex justify-center items-center flex-wrap gap-6  md:gap-8 md:mt-20 lg:gap-12">
+        <div className="flex flex-col gap-4 justify-center items-center mt-6 md:mt-0">
+          <h2 className="text-2xl text-blue-600 ">Revenue</h2>
         {
           data && 
         <AdminHomePieChart soldData = {data[0]} totalRevenue = {data[1].revenue}></AdminHomePieChart>
         }
+
+        </div>
+        <div className="flex flex-col gap-4 justify-center items-center">
+          <h2 className="text-2xl text-blue-600 " >Item Sold</h2>
         {
           data && <AdminHomeTowerChart soldData = {data[0]}></AdminHomeTowerChart>
         }
+        </div>
        
       </div>
     </>

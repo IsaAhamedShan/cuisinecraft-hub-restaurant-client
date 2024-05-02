@@ -58,7 +58,7 @@ const UpdateItem = () => {
         <Toaster position="top-right" reverseOrder={false}></Toaster>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="p-10 bg-slate-300 rounded-md"
+          className="p-10 bg-red-300 rounded-md"
         >
           <label className="form-control  w-full">
             <div className="label">

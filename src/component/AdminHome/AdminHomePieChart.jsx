@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
+import React, { PureComponent, useEffect } from "react";
+import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 const RADIAN = Math.PI / 180;
 
@@ -31,26 +31,34 @@ export default class Example extends PureComponent {
       );
     };
     const { soldData, totalRevenue } = this.props;
-    const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+    const COLORS = ["#0088FE", "#3282BD", "#9ECAE1", "#56B4E9"];
+    
+      const data = soldData?.map(item => {
+        return {
+          name: item._id,
+          value: Math.floor(totalRevenue / item.revenue),
+        };
+      });
+   
     const dataa = [
       {
         name: "Pizza",
-        value: totalRevenue / soldData[0].revenue,
+        value: totalRevenue / soldData[0]?.revenue,
         color: "#FF5733",
       },
       {
         name: "Salad",
-        value: totalRevenue / soldData[1].revenue,
+        value: totalRevenue / soldData[1]?.revenue,
         color: "#26ff35",
       },
       {
         name: "Dessert",
-        value: totalRevenue / soldData[2].revenue,
+        value: totalRevenue / soldData[2]?.revenue,
         color: "#FFC0CB",
       },
       {
         name: "Soup",
-        value: totalRevenue / soldData[3].revenue,
+        value: totalRevenue / soldData[3]?.revenue,
         color: "#FFA500",
       },
     ];
@@ -60,7 +68,7 @@ export default class Example extends PureComponent {
         <ResponsiveContainer width="100%" height="100%">
           <PieChart width={400} height={400}>
             <Pie
-              data={dataa}
+              data={data}
               cx="50%"
               cy="50%"
               labelLine={false}
@@ -69,13 +77,15 @@ export default class Example extends PureComponent {
               fill="#8884d8"
               dataKey="value"
             >
-              {dataa.map((entry, index) => (
-                <>
-               
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                </>
-              ))}
+              {data &&
+                data?.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
             </Pie>
+            <Legend></Legend>
           </PieChart>
         </ResponsiveContainer>
       </div>

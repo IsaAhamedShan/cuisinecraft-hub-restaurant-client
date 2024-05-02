@@ -48,7 +48,7 @@ const unsuccess = ()=> toast.error("Couldn't add item")
       <div className="max-w-5xl m-auto my-8 px-2 md:px-4 xl:px-0">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="p-10 bg-slate-300 rounded-md"
+          className="p-10 bg-red-300 rounded-md"
         >
           <label className="form-control  w-full">
             <div className="label">
