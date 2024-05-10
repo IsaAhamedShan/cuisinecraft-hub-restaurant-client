@@ -5,6 +5,8 @@ import ContactForm from "../../ContactUs/ContactForm";
 import ContactInfo from "../../ContactUs/ContactInfo";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import toast, { Toaster } from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 const Reservation = () => {
   const {
     register,
@@ -14,10 +16,12 @@ const Reservation = () => {
     formState: { errors },
   } = useForm();
   const axios = useAxiosSecure();
+  const {user} = useContext(AuthContext)
 
   const onSubmit = reservationData => {
     console.log(reservationData);
-    reservationData.status = "pending"
+    reservationData.status = "pending";
+    reservationData.userEmail = user?.email;
     axios
       .post("/reservation", {
         reservationData,
@@ -70,7 +74,7 @@ const Reservation = () => {
             </label>
             <label className="form-control w-full max-w-xs mx-4">
               <div className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text">Email (To send status)</span>
               </div>
               <input
                 className="input input-bordered w-full max-w-xs rounded-sm"

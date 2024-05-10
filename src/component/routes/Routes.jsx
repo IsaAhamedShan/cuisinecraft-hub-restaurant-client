@@ -22,6 +22,7 @@ import UserHome from "../UserHome/UserHome.jsx";
 import AdminHome from "../AdminHome/AdminHome.jsx";
 import Reservation from "../pages/Dashboard/Reservation/Reservation.jsx";
 import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings.jsx";
+import MyBookings from "../pages/Dashboard/MyBookings/MyBookings.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
         path:"manageBookings",
         element:<AdminRoutes><ManageBookings></ManageBookings></AdminRoutes>
 
+      },
+      {
+        path:"myBookings",
+        element:<MyBookings></MyBookings>
       }
     ],
   },
