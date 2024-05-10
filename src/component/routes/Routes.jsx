@@ -20,6 +20,7 @@ import AdminRoutes from "./AdminRoutes.jsx";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory.jsx";
 import UserHome from "../UserHome/UserHome.jsx";
 import AdminHome from "../AdminHome/AdminHome.jsx";
+import Reservation from "../pages/Dashboard/Reservation/Reservation.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,7 +76,10 @@ const router = createBrowserRouter([
         path: "payment",
         element: <Payment></Payment>,
       },
-
+      {
+        path:"reservation",
+        element:<Reservation></Reservation>
+      },
       {
         path: "allUsers",
         element: (

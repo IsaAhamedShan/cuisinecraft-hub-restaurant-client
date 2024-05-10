@@ -13,7 +13,7 @@ const ContactInfo = () => {
     },
   });
 
-  console.log("data",data);
+  // console.log("data",data);
   return (
     <div className="my-12">
       <SectionIntro heading="Visit Us" text="our Location" />

@@ -14,7 +14,7 @@ import { AuthContext } from "../provider/AuthProvider";
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -102,7 +102,7 @@ const Dashboard = () => {
               </ul>
             ) : (
               <ul className="menu mb-10 border-white border-b-2 mx-6">
-                <li className="">
+                <li>
                   <NavLink
                     to="/dashboard/userHome"
                     className="flex gap-2 justify-start items-center py-3  md:text-xl"

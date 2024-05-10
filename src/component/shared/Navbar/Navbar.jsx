@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import logoVertical from "../../../assets/main-logo/svg/logo-no-background-vertical.svg";
@@ -10,6 +10,7 @@ import { FaOpencart } from "react-icons/fa6";
 import useCart from "../../Hooks/useCart";
 import { AnimatedHamburgerButton } from "./AnimatedHamburgerButton";
 import useAdmin from "../../Hooks/useAdmin";
+import DarkMode from "../../common/DarkMode/DarkMode"
 
 const Navbar = () => {
   const { logout } = useContext(AuthContext);
@@ -61,11 +62,14 @@ const Navbar = () => {
         <li className="font-bold font-raleway">
           <Link to="/dashboard/adminHome">DASHBOARD</Link>
         </li>
-      ) : (
-        <li className="font-bold font-raleway">
+      ) : null}
+      {
+        user && !isAdmin? (
+          <li className="font-bold font-raleway">
           <Link to="/dashboard/userHome">DASHBOARD</Link>
         </li>
-      )}
+        ):null
+      }
 
       <li className="font-bold font-raleway">
         <Link to="/ourMenu">MENU</Link>
@@ -98,6 +102,7 @@ const Navbar = () => {
           <Link>LOGOUT</Link>
         </li>
       ) : null}
+      
     </>
   );
 

@@ -1,6 +1,6 @@
+import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
 
 import { format } from "date-fns";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";

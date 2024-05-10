@@ -64,12 +64,12 @@ const Mycart = () => {
           {cart.length > 0 ? (
             <button className="btn btn-outline bg-red-300 hover:bg-red-400 border-none px-6">
               <Link to="/dashboard/payment">
-                <p className="text-lg">Pay</p>
+                <p className="text-lg text-white">Pay</p>
               </Link>
             </button>
           ) : (
             <button disabled className="btn disabled btn-outline bg-red-300 hover:bg-red-400 border-none px-6">
-              <p className="text-lg">Pay</p>
+              <p className="text-lg text-white">Pay</p>
             </button>
           )}
         </div>
@@ -80,10 +80,10 @@ const Mycart = () => {
             <thead className=" bg-red-300">
               <tr className="">
                 <th className="">#</th>
-                <th className="py-6  md:text-xl ">Item Image</th>
-                <th className="py-6  md:text-xl ">Item Name</th>
-                <th className="py-6  md:text-xl ">Price</th>
-                <th className="py-6  md:text-xl ">Action</th>
+                <th className="py-6 text-white md:text-xl ">Item Image</th>
+                <th className="py-6 text-white md:text-xl ">Item Name</th>
+                <th className="py-6 text-white md:text-xl ">Price</th>
+                <th className="py-6 text-white md:text-xl ">Action</th>
               </tr>
             </thead>
             <tbody>

@@ -23,6 +23,7 @@ const Home = () => {
     <div>
       <Helmet>
         <title>CuisineCraft-Hub | Home</title>
+      
       </Helmet>
       {/* <Navbar></Navbar> */}
       <Banner></Banner>
