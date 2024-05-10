@@ -24,7 +24,7 @@ const Reservation = () => {
       })
       .then(res => {
         if (res.status === 200) {
-          toast.success("Reservation Success");
+          toast.success("Reservation Request Success");
           reset()
         }
         // console.log(res)
