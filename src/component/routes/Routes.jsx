@@ -21,6 +21,7 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory.jsx
 import UserHome from "../UserHome/UserHome.jsx";
 import AdminHome from "../AdminHome/AdminHome.jsx";
 import Reservation from "../pages/Dashboard/Reservation/Reservation.jsx";
+import ManageBookings from "../pages/Dashboard/ManageBookings/ManageBookings.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -117,6 +118,11 @@ const router = createBrowserRouter([
         path: "paymentHistory",
         element: <PaymentHistory></PaymentHistory>,
       },
+      {
+        path:"manageBookings",
+        element:<AdminRoutes><ManageBookings></ManageBookings></AdminRoutes>
+
+      }
     ],
   },
 ]);
