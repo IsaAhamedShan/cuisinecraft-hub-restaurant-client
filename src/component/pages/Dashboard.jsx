@@ -137,7 +137,7 @@ const Dashboard = () => {
                     My Cart
                   </NavLink>
                 </li>
-                <li className="">
+                {/* <li className="">
                   <NavLink
                     to="/dashboard/addReview"
                     className="flex gap-2 justify-start items-center py-3  md:text-xl"
@@ -145,7 +145,7 @@ const Dashboard = () => {
                     <MdOutlineRateReview className="md:text-xl" />
                     Add Review
                   </NavLink>
-                </li>
+                </li> */}
                 <li className="">
                   <NavLink
                     to="/dashboard/myBookings"
