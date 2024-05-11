@@ -51,11 +51,11 @@ const PaymentHistory = () => {
             {/* head */}
             <thead className=" bg-red-300">
               <tr className="">
-                <th className="">#</th>
-                <th className="py-6 text-center  md:text-xl ">Email</th>
-                <th className="py-6  text-center md:text-xl ">Purchased List</th>
-                <th className="py-6  text-center md:text-xl ">Price</th>
-                <th className="py-6 text-center pl-5 md:text-xl ">Payment Date</th>
+                <th className="text-white">#</th>
+                <th className="py-6 text-white text-center  md:text-xl ">Email</th>
+                <th className="py-6 text-white text-center md:text-xl ">Purchased List</th>
+                <th className="py-6 text-white text-center md:text-xl ">Price</th>
+                <th className="py-6 text-white text-center pl-5 md:text-xl ">Payment Date</th>
               </tr>
             </thead>
             <tbody>
@@ -93,7 +93,7 @@ const PaymentHistory = () => {
                         </td>
                       </tr>
  
-                      <dialog id={item._id} className="paymentModal">
+                      <dialog id={item._id} className="paymentModal p-8 text-white">
                         <PaymentHistoryPurchaseDetailsModal
                           item={item}
                         ></PaymentHistoryPurchaseDetailsModal>
@@ -101,7 +101,7 @@ const PaymentHistory = () => {
                         <div className="modal-action">
                           {/* <form method="dialog"> */}
                           <button
-                            className="btn"
+                            className="btn rounded-sm bg-red-300 text-white hover:bg-red-400 btn-sm "
                             onClick={() => {
                               document.getElementById(item._id).close();
                             }}
