@@ -11,7 +11,7 @@ const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();
   const [totalExpense, setTotalExpense] = useState(0);
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["paymentHistory1"],
+    queryKey: ["paymentHistory1",user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/paymentHistory/${user?.email}`);
       console.log(res.data);
@@ -25,8 +25,8 @@ const PaymentHistory = () => {
   });
   if (isLoading) {
     return (
-      <div>
-        <p className="text-3xl">Loading...</p>
+      <div className="flex justify-center items-center">
+        <p className="text-5xl">Loading...</p>
       </div>
     );
   }

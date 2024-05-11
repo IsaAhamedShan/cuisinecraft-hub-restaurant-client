@@ -31,42 +31,46 @@ const MyBookings = () => {
     const timeObj = new Date(0, 0, 0, hour, minute);
     return format(timeObj, "h:mm a");
   }
-  const handleDeleteReservation = (_id)=>{
+  const handleDeleteReservation = _id => {
     const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger",
-        },
-        buttonsStyling: false,
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Cancel Reservation?",
+        cancelButtonText: "No!",
+        reverseButtons: true,
+      })
+      .then(result => {
+        if (result.isConfirmed) {
+          axiosSecure.delete(`/deleteReservation?_id=${_id}`).then(res => {
+            console.log(res);
+
+            if (res.data.deletedCount > 0) {
+              toast.success("Reservation Deleted");
+              refetch();
+            } else {
+              toast.error("Something is wrong.Try Again");
+            }
+          });
+        }
       });
-      swalWithBootstrapButtons
-        .fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonText: "Cancel Reservation?",
-          cancelButtonText: "No!",
-          reverseButtons: true,
-        })
-        .then(result => {
-          if (result.isConfirmed) {
-            axiosSecure
-              .delete(`/deleteReservation?_id=${_id}`,)
-              .then(res => {
-                console.log(res)
-
-                if (res.data.deletedCount > 0) {
-                  toast.success("Reservation Deleted");
-                  refetch();
-                } else {
-                  toast.error("Something is wrong.Try Again");
-                }
-              });
-          }
-        });
-    };
-
+  };
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center">
+        <p className="text-5xl">Loading...</p>
+      </div>
+    );
+  }
   return (
     <div>
       <SectionIntro
@@ -133,9 +137,12 @@ const MyBookings = () => {
                       </td>
                       <td className="px-4 md:px-4">
                         {item.reservationData.status === "pending" ? (
-                            <button className="hover:scale-105">
-                                <MdDelete  className="text-red-500 text-3xl ml-4" onClick={()=>handleDeleteReservation(item._id)} />
-                            </button>
+                          <button className="hover:scale-105">
+                            <MdDelete
+                              className="text-red-500 text-3xl ml-4"
+                              onClick={() => handleDeleteReservation(item._id)}
+                            />
+                          </button>
                         ) : (
                           <MdDelete className="text-gray-400 text-3xl ml-4 disabled:" />
                         )}

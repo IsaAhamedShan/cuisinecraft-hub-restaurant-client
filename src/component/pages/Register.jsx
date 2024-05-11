@@ -21,7 +21,8 @@ const Register = () => {
   const navigate = useNavigate();
   const { register } = useContext(AuthContext);
   const [captchaVal, setCaptchaVal] = useState(false);
-  const recaptchaSiteKey = import.meta.env.VITE_recapthaSiteKey;
+  // const recaptchaSiteKey = import.meta.env.VITE_recapthaSiteKey;
+  const recaptchaSiteKey = '6Lfv_lgpAAAAAIdVbA4ch5QKQPHn_JaUAofsNx58'
   const handleNameChange = e => {
     setName(e.target.value);
   };

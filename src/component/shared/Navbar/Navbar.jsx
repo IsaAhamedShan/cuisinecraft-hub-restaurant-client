@@ -1,3 +1,4 @@
+import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
@@ -10,7 +11,7 @@ import { FaOpencart } from "react-icons/fa6";
 import useCart from "../../Hooks/useCart";
 import { AnimatedHamburgerButton } from "./AnimatedHamburgerButton";
 import useAdmin from "../../Hooks/useAdmin";
-import DarkMode from "../../common/DarkMode/DarkMode"
+import DarkMode from "../../common/DarkMode/DarkMode";
 
 const Navbar = () => {
   const { logout } = useContext(AuthContext);
@@ -63,13 +64,11 @@ const Navbar = () => {
           <Link to="/dashboard/adminHome">DASHBOARD</Link>
         </li>
       ) : null}
-      {
-        user && !isAdmin? (
-          <li className="font-bold font-raleway">
+      {user && !isAdmin ? (
+        <li className="font-bold font-raleway">
           <Link to="/dashboard/userHome">DASHBOARD</Link>
         </li>
-        ):null
-      }
+      ) : null}
 
       <li className="font-bold font-raleway">
         <Link to="/ourMenu">MENU</Link>
@@ -102,7 +101,6 @@ const Navbar = () => {
           <Link>LOGOUT</Link>
         </li>
       ) : null}
-      
     </>
   );
 
@@ -114,7 +112,9 @@ const Navbar = () => {
         <Toaster></Toaster>
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <AnimatedHamburgerButton></AnimatedHamburgerButton>
+            {/* <AnimatedHamburgerButton></AnimatedHamburgerButton> */}
+
+            <HiOutlineBars3BottomRight />
           </div>
           <ul
             tabIndex={0}
