@@ -31,7 +31,7 @@ const PaymentHistoryPurchaseDetailsModal = ({ item }) => {
       <div className="overflow-x-auto max-w-5xl mx-auto max-h-[300px]">
         <table className="table ">
           {/* head */}
-          <thead className=" bg-red-300">
+          <thead className="   bg-[#A0DEFF]   ">
             <tr className="">
               <th className="py-6 text-white  md:text-xl ">Name</th>
               <th className="py-6 text-white  md:text-xl ">Category</th>

@@ -10,7 +10,7 @@ const ContactCard = ({ data }) => {
   return (
     <div className="flex flex-wrap justify-center items-center gap-6 max-w-7xl m-auto">
       <div className="w-96 h-72 border-2 hover:border-slate-400">
-      <div className="flex justify-center items-center bg-blue-300 py-4">
+      <div className="flex justify-center items-center   bg-[#A0DEFF]   py-4">
         <FaPhoneSquare className="text-4xl" />
       </div>
       <div className="m-3">
@@ -21,7 +21,7 @@ const ContactCard = ({ data }) => {
       </div>
     </div>
     <div className="w-96 h-72 border-2 hover:border-slate-400">
-      <div className="flex justify-center items-center bg-blue-300 py-4">
+      <div className="flex justify-center items-center   bg-[#A0DEFF]   py-4">
       
         <FaLocationDot className="text-4xl" />
       </div>
@@ -33,7 +33,7 @@ const ContactCard = ({ data }) => {
       </div>
     </div>
     <div className="w-96 h-72 border-2 hover:border-slate-400">
-      <div className="flex justify-center items-center bg-blue-300 py-4">
+      <div className="flex justify-center items-center   bg-[#A0DEFF]   py-4">
         <GoClockFill className="text-4xl" />
       </div>
       <div className="m-3">

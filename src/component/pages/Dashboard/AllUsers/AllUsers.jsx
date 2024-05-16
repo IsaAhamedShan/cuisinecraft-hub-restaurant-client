@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
+import { FaUser } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { FaUser } from "react-icons/fa";
 
 import { useQuery } from "@tanstack/react-query";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -102,13 +102,13 @@ const AllUsers = () => {
         <div className="overflow-x-auto max-w-7xl mx-auto">
           <table className="table">
             {/* head */}
-            <thead className=" bg-red-300">
+            <thead className="   bg-[#A0DEFF]   ">
               <tr className="">
                 <th className="">#</th>
-                <th className="py-6  md:text-xl ">Name</th>
-                <th className="py-6  md:text-xl ">Email</th>
-                <th className="py-6 pl-5 md:text-xl ">Role</th>
-                <th className="py-6  md:text-xl ">Action</th>
+                <th className="py-6 text-black  md:text-xl ">Name</th>
+                <th className="py-6 text-black  md:text-xl ">Email</th>
+                <th className="py-6 text-black pl-5 md:text-xl ">Role</th>
+                <th className="py-6 text-black  md:text-xl ">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -144,7 +144,7 @@ const AllUsers = () => {
                             <FaUser className=" text-red-600 hover:scale-105 duration-150  rounded-md cursor-pointer md:text-xl xl:text-2xl" />
                           </button>
                         )}
-                      </td>
+                      </td> text-black
                       <th>
                         <button
                           className="btn"

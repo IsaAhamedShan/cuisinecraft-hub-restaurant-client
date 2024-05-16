@@ -16,10 +16,13 @@ const PaymentHistory = () => {
       const res = await axiosSecure.get(`/paymentHistory/${user?.email}`);
       console.log(res.data);
       let sum = 0;
-      await res.data.forEach(item => {
-        sum += item.price;
-      });
-      setTotalExpense(sum);
+      if(res.data.length >0){
+        await res.data.forEach(item => {
+          sum += item.price;
+        });
+        
+        setTotalExpense(sum);
+      }
       return res.data;
     },
   });
@@ -30,6 +33,7 @@ const PaymentHistory = () => {
       </div>
     );
   }
+  console.log("total expenses: ",totalExpense)
   return (
     <>
       <div>
@@ -39,7 +43,7 @@ const PaymentHistory = () => {
         ></SectionIntro>
         <div className="flex justify-between items-center w-full p-6 max-w-7xl mx-auto gap-4">
           <p className="text-lg text-center md:text-2xl lg:text-3xl">
-            Total Payment : {data?.length}
+            Total Payments : {data?.length}
           </p>
           <p className="text-lg text-center md:text-2xl lg:text-3xl">
             Total Expenses : ${totalExpense}
@@ -49,7 +53,7 @@ const PaymentHistory = () => {
         <div className="overflow-x-auto max-w-7xl mx-auto">
           <table className="table">
             {/* head */}
-            <thead className=" bg-red-300">
+            <thead className="   bg-[#A0DEFF]   ">
               <tr className="">
                 <th className="text-white">#</th>
                 <th className="py-6 text-white text-center  md:text-xl ">Email</th>
@@ -101,7 +105,7 @@ const PaymentHistory = () => {
                         <div className="modal-action">
                           {/* <form method="dialog"> */}
                           <button
-                            className="btn rounded-sm bg-red-300 text-white hover:bg-red-400 btn-sm "
+                            className="btn rounded-sm   bg-[#A0DEFF]   text-white hover:bg-red-400 btn-sm "
                             onClick={() => {
                               document.getElementById(item._id).close();
                             }}

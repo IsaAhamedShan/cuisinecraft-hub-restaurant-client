@@ -61,14 +61,14 @@ const ManageItem = () => {
         <div className="overflow-x-auto max-w-7xl mx-auto">
           <table className="table">
             {/* head */}
-            <thead className=" bg-red-300">
+            <thead className="   bg-[#A0DEFF]   ">
               <tr className="">
                 <th className="">#</th>
-                <th className="py-6  md:text-xl ">Item Image</th>
-                <th className="py-6  md:text-xl ">Item Name</th>
-                <th className="py-6 pl-5 md:text-xl ">Price</th>
-                <th className="py-6  md:text-xl ">Update</th>
-                <th className="py-6  md:text-xl ">Delete</th>
+                <th className="py-6  md:text-xl text-black ">Item Image</th>
+                <th className="py-6  md:text-xl text-black ">Item Name</th>
+                <th className="py-6 pl-5 md:text-xl text-black ">Price</th>
+                <th className="py-6  md:text-xl text-black ">Update</th>
+                <th className="py-6  md:text-xl text-black ">Delete</th>
               </tr>
             </thead>
             <tbody>

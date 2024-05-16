@@ -1,8 +1,8 @@
+import { useForm } from "react-hook-form";
+import toast, { Toaster } from 'react-hot-toast';
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SectionIntro from "../../../common/SectionIntro";
-import { useForm } from "react-hook-form";
-import toast, { Toaster } from 'react-hot-toast';
 const AddItems = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
@@ -48,7 +48,7 @@ const unsuccess = ()=> toast.error("Couldn't add item")
       <div className="max-w-5xl m-auto my-8 px-2 md:px-4 xl:px-0">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="p-10 bg-red-300 rounded-md"
+          className="p-10   bg-[#A0DEFF]    rounded-md shadow-lg"
         >
           <label className="form-control  w-full">
             <div className="label">

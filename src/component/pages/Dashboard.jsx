@@ -6,7 +6,7 @@ import { FaBook, FaList, FaShop, FaUser } from "react-icons/fa6";
 import { GiKnifeFork } from "react-icons/gi";
 import { IoMdCart, IoMdMenu } from "react-icons/io";
 import { LuMenu } from "react-icons/lu";
-import { MdDateRange, MdOutlineRateReview, MdPayment } from "react-icons/md";
+import { MdDateRange, MdPayment } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import logo from "../../assets/main-logo/svg/logo-no-background.svg";
 import useAdmin from "../Hooks/useAdmin";
@@ -54,7 +54,7 @@ const Dashboard = () => {
             className="drawer-overlay"
           ></label>
           {/* drawer content */}
-          <div className="w-72 min-h-[100vh] bg-red-300 sticky top-0">
+          <div className="w-72 min-h-[100vh]   bg-[#A0DEFF]   sticky top-0">
             <img src={logo} className="w-52 p-6 pl-12" alt="" />
             {user && isAdmin ? (
               <ul className="menu mb-10 border-white border-b-2 mx-6">

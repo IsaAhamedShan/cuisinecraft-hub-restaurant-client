@@ -1,12 +1,11 @@
-import { CiViewTable } from "react-icons/ci";
-import SectionIntro from "../../../common/SectionIntro";
-import { useForm } from "react-hook-form";
-import ContactForm from "../../ContactUs/ContactForm";
-import ContactInfo from "../../ContactUs/ContactInfo";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import toast, { Toaster } from "react-hot-toast";
 import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
+import { CiViewTable } from "react-icons/ci";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import SectionIntro from "../../../common/SectionIntro";
 import { AuthContext } from "../../../provider/AuthProvider";
+import ContactInfo from "../../ContactUs/ContactInfo";
 const Reservation = () => {
   const {
     register,
@@ -48,7 +47,7 @@ const Reservation = () => {
         text={"BOOK A TABLE"}
       ></SectionIntro>
       {/* form */}
-      <form onSubmit={handleSubmit(onSubmit)} className=" md:m-8">
+      <form onSubmit={handleSubmit(onSubmit)} className=" p-8 md:m-8 rounded-lg border-none bg-[#CAF4FF]">
         {/* register your input into the hook by invoking the "register" function */}
         <div className="flex justify-center items-center flex-col gap-4 md:gap-20">
           <div className="flex flex-wrap justify-center items-center md:gap-14">
@@ -57,17 +56,17 @@ const Reservation = () => {
                 <span className="label-text">Name</span>
               </div>
               <input
-                className="input input-bordered w-full max-w-xs rounded-sm"
+                className="input  w-full max-w-xs rounded-sm"
                 placeholder="Name"
                 {...register("name", { required: true })}
               />
             </label>
-            <label className="form-control w-full max-w-xs mx-4 rounded-sm">
+            <label className="form-control w-full max-w-xs mx-4 ">
               <div className="label">
                 <span className="label-text">Mobile</span>
               </div>
               <input
-                className="input input-bordered w-full max-w-xs"
+                className="input  w-full max-w-xs rounded-sm"
                 placeholder="01xxxxxxxxx"
                 {...register("phone")}
               />
@@ -77,7 +76,7 @@ const Reservation = () => {
                 <span className="label-text">Email (To send status)</span>
               </div>
               <input
-                className="input input-bordered w-full max-w-xs rounded-sm"
+                className="input  w-full max-w-xs rounded-sm"
                 type="email"
                 placeholder="Example@gmail.com"
                 {...register("email")}
@@ -89,7 +88,7 @@ const Reservation = () => {
                 <span className="label-text">Date</span>
               </div>
               <input
-                className="input input-bordered w-full max-w-xs rounded-sm"
+                className="input  w-full max-w-xs rounded-sm"
                 type="date"
                 {...register("date", { required: true })}
               />
@@ -100,7 +99,7 @@ const Reservation = () => {
                 <span className="label-text">Time</span>
               </div>
               <input
-                className="input input-bordered w-full max-w-xs rounded-sm"
+                className="input  w-full max-w-xs rounded-sm"
                 type="time"
                 {...register("time", { required: true })}
               />
@@ -110,7 +109,7 @@ const Reservation = () => {
                 <span className="label-text">Guest</span>
               </div>
               <select
-                className="select select-bordered rounded-sm"
+                className="select  rounded-sm"
                 {...register("guest", { required: true })}
               >
                 <option disabled selected>
@@ -124,7 +123,7 @@ const Reservation = () => {
             </label>
           </div>
           <button
-            className="btn btn-wide rounded-sm bg-blue-300 hover:bg-blue-400 text-white"
+            className="btn btn-wide rounded-sm bg-[#A0DEFF] hover:bg-[#FFF9D0] hover:text-black border-none hover:border-2 hover:border-grey-900 text-white"
             type="submit"
           >
             Book a Table

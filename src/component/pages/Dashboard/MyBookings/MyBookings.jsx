@@ -87,15 +87,15 @@ const MyBookings = () => {
         <div className="overflow-x-auto max-w-7xl mx-auto">
           <table className="table">
             {/* head */}
-            <thead className=" bg-red-300">
+            <thead className="   bg-[#A0DEFF]   ">
               <tr className="">
                 <th className="">#</th>
-                <th className="py-6  md:text-xl ">Confirmation Email</th>
-                <th className="py-6  md:text-xl ">Contact</th>
-                <th className="py-6 pl-5 md:text-xl ">Date</th>
-                <th className="py-6  md:text-xl ">Time</th>
-                <th className="py-6  md:text-xl ">Status</th>
-                <th className="py-6  md:text-xl ">Delete </th>
+                <th className="py-6 text-black  md:text-xl ">Confirmation Email</th>
+                <th className="py-6 text-black  md:text-xl ">Contact</th>
+                <th className="py-6 text-white pl-5 md:text-xl ">Date</th>
+                <th className="py-6 text-black  md:text-xl ">Time</th>
+                <th className="py-6 text-black  md:text-xl ">Status</th>
+                <th className="py-6 text-black  md:text-xl ">Delete </th>
               </tr>
             </thead>
             <tbody>

@@ -27,7 +27,7 @@ const ContactForm = () => {
         <Toaster position="top-right" reverseOrder={false}></Toaster>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="p-10 bg-blue-200 rounded-md"
+          className="p-10   bg-[#A0DEFF]   -200 rounded-md"
         >
           <label className="form-control  w-full">
             <div className="label">
@@ -78,7 +78,7 @@ const ContactForm = () => {
           <div className="flex justify-between">
             
             {/* {errors.name && errors.details && errors.price && <span>All field are required</span>} */}
-            <button type="submit" className="btn btn-outline border hover:bg-blue-300 hover:border-none " >
+            <button type="submit" className="btn btn-outline border hover:  bg-[#A0DEFF]   hover:border-none " >
               Send Message
             </button>
           </div>

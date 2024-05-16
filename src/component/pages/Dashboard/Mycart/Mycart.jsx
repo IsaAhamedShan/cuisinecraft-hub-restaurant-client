@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useCart from "../../../Hooks/useCart";
 import SectionIntro from "../../../common/SectionIntro";
 import { AuthContext } from "../../../provider/AuthProvider";
-import { Link } from "react-router-dom";
 const Mycart = () => {
   const [cart, refetch] = useCart();
   console.log("cart is:", cart);
@@ -62,13 +62,13 @@ const Mycart = () => {
             Total Price: {totalValue && totalValue} $
           </p>
           {cart.length > 0 ? (
-            <button className="btn btn-outline bg-red-300 hover:bg-red-400 border-none px-6">
+            <button className="btn btn-outline   bg-[#A0DEFF]   hover:bg-red-400 border-none px-6">
               <Link to="/dashboard/payment">
                 <p className="text-lg text-white">Pay</p>
               </Link>
             </button>
           ) : (
-            <button disabled className="btn disabled btn-outline bg-red-300 hover:bg-red-400 border-none px-6">
+            <button disabled className="btn disabled btn-outline   bg-[#A0DEFF]   hover:bg-red-400 border-none px-6">
               <p className="text-lg text-white">Pay</p>
             </button>
           )}
@@ -77,7 +77,7 @@ const Mycart = () => {
         <div className="overflow-x-auto max-w-7xl mx-auto">
           <table className="table">
             {/* head */}
-            <thead className=" bg-red-300">
+            <thead className="   bg-[#A0DEFF]   ">
               <tr className="">
                 <th className="">#</th>
                 <th className="py-6 text-white md:text-xl ">Item Image</th>
@@ -113,7 +113,7 @@ const Mycart = () => {
                       <div>
                         {item.name}
                         <br />
-                        <span className="badge badge-ghost badge-sm rounded-md bg-red-300 py-2">
+                        <span className="badge badge-ghost badge-sm rounded-md   bg-[#A0DEFF]   py-2">
                           {item.category}
                         </span>
                       </div>

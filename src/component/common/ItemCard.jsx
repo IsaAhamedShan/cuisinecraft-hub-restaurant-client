@@ -64,7 +64,7 @@ const ItemCard = ({ item }) => {
   return (
     <div>
       <Toaster />
-      <div className="card w-[320px] h-[432.8px] md:w-[340px] md:h-[459.85px] lg:w-[370px] lg:h-[500.42px] xl:w-[400px] xl:h-[541px] shadow-xl rounded-sm hover:scale-105 duration-200 cursor-pointer bg-yellow-100 ">
+      <div className="card w-[320px] h-[432.8px] md:w-[340px] md:h-[459.85px] lg:w-[370px] lg:h-[500.42px] xl:w-[400px] xl:h-[541px] shadow-xl rounded-sm hover:scale-105 duration-200 cursor-pointer bg-[#CAF4FF] ">
         <figure>
           <img
             src={image}
@@ -83,7 +83,7 @@ const ItemCard = ({ item }) => {
 
           <div className="card-actions">
             <button
-              className="btn btn-wide rounded-md text-[#BB8506]  text-2xl  bg-yellow-200 hover:bg-[#1F2937] border-b-4 border-x-0 border-t-0 border-yellow-700 hover:border-gray-500"
+              className="btn btn-wide rounded-md text-white  text-2xl  bg-[#A0DEFF] hover:bg-[#5AB2FF] border-b-4 border-x-0 border-t-0 border-blue-400 hover:border-[##A0DEFF]"
               onClick={() => handleAddToCart(item)}
             >
               Add to Cart!
